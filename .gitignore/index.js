@@ -79,12 +79,12 @@ bot.on('message', function(message) {
     });
 
 bot.on("guildMemberAdd", function(member) {
-    member.guild.channels.find("name", "📄logs📄").sendMessage(member.toString() + " Bienvenue sur le discord de **Supers Fanne** ! :white_check_mark:");
+    member.guild.channels.find("name", "🤖bot-logs🤖").sendMessage(member.toString() + " Bienvenue sur le discord de **Supers Fanne** ! :white_check_mark:");
     member.addRole(member.guild.roles.find("name", "Abonné ?"));
 });
 
 bot.on("guildMemberRemove", function(member) {
-     member.guild.channels.find("name", "📄logs📄").sendMessage(member.toString() + " Bye bye!" + member.toString() + " :x:");
+     member.guild.channels.find("name", "🤖bot-logs🤖").sendMessage(member.toString() + " Bye bye!" + member.toString() + " :x:");
 });
 
 
@@ -109,11 +109,11 @@ bot.on("message", async function(message) {
     
     var member = message.member;
 
-    var roleJoueur= member.guild.roles.find("name", "Abonné")
+    var roleJoueur= member.guild.roles.find("name", "Abonné ?")
     
     var roleMute = member.guild.roles.find("name", "Mute")
     
-    var modlog = member.guild.channels.find("name", "📄logs📄")
+    var modlog = member.guild.channels.find("name", "🤖bot-logs🤖")
     
     var user = message.mentions.users.first();
 
@@ -180,7 +180,7 @@ bot.on("message", async function(message) {
         .setColor("#3333cc")
         .setAuthor(message.author.username, message.author.avatarURL)
         .setTimestamp()
-        member.guild.channels.find("name", "📄logs📄").sendEmbed(embed);
+        member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
         break;
         case "mute":
         if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu n'as pas la permission d'exécuter la commande. :x:");
@@ -199,7 +199,7 @@ bot.on("message", async function(message) {
         .setColor("#FFFF00")
         .setAuthor(message.author.username, message.author.avatarURL)
         .setTimestamp()
-        member.guild.channels.find("name", "📄logs📄").sendEmbed(embed);
+        member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
         break;
         case "shelp":
             if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
@@ -257,8 +257,8 @@ bot.on("message", async function(message) {
             .setColor("#99ff33")
             .setAuthor(message.author.username, message.author.avatarURL)
             .setTimestamp()
-            member.guild.channels.find("name", "📄logs📄").sendEmbed(embed);
-            bot.channels.get('429665350922141716').sendMessage(":white_check_mark: Le joueur " + user.username + " à bien été kick pour: " + reason);
+            member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
+            bot.channels.get('434403059825901570').sendMessage(":white_check_mark: Le joueur " + user.username + " à bien été kick pour: " + reason);
        
             message.delete();
             break;
@@ -280,9 +280,9 @@ bot.on("message", async function(message) {
             .setColor("#ff9933")
             .setAuthor(message.author.username, message.author.avatarURL)
             .setTimestamp()
-            member.guild.channels.find("name", "📄logs📄").sendEmbed(embed);
+            member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
             
-            bot.channels.get('429665350922141716').sendMessage(":white_check_mark: Le joueur " + user.username + " à bien été kick pour: " + reason);
+            bot.channels.get('434403059825901570').sendMessage(":white_check_mark: Le joueur " + user.username + " à bien été kick pour: " + reason);
             
             message.delete();
             break;
@@ -301,7 +301,7 @@ bot.on("message", async function(message) {
             .setColor("#009999")
             .setFooter("Ouf ! Sa as fait un bon ménage dans le serveur ! ^^")
             message.delete()
-            member.guild.channels.find("name", "📄logs📄").sendEmbed(embed);
+            member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
             break;
 
 
@@ -365,4 +365,4 @@ bot.on("message", async function(message) {
     }
 });
 
-bot.login('NDM2Mjc0MTIzNzIzODk4ODgx.Db4POQ.cHfs_qL8dGYTDykFpgvHIvCO6tA');
+bot.login('NDM2Mjc0MTIzNzIzODk4ODgx.Db4aDg.FR8Wq-smMOWTiOQrr21mM0vsCAQ');
