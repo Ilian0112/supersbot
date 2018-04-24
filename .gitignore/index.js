@@ -1,4 +1,4 @@
-﻿const Discord = require("discord.js");
+const Discord = require("discord.js");
 const YTDL = require("ytdl-core");
 const PREFIX = ".";
 const queue = new Map();
@@ -73,6 +73,11 @@ bot.on('message', function(message) {
     
         if(message.content === 'Wsh') {
             message.channel.sendMessage('wshh frr')
+        }
+    
+        if(message.content === 'Ta mère la grosse pute') {
+            message.reply('Surveille ton language jeune insolents !')
+            message.delete()
         }
     
     
@@ -316,15 +321,15 @@ bot.on("message", async function(message) {
         break; 
             
        case "google":
-        let args = message.content.split(' ');
-        args.shift();
+        let glg = message.content.split(' ');
+        glg.shift();
         console.log("J'ai rechercher!");
-        message.reply('https://www.google.fr/#q=' + args.join('%20'));
+        message.reply('https://www.google.fr/#q=' + glg.join('%20'));
         break;
 
        case "web":
            if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
-            var messagecount = parseInt(args2.join(" "));
+            var messagecount = parseInt(arg2.join(" "));
             message.channel.fetchMessages({
                 limit: messagecount
             }).then(messages => message.channel.bulkDelete(messagecount));
