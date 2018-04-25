@@ -235,6 +235,7 @@ bot.on("message", async function(message) {
                  .addField(".play", "Jouer une musique !  Pour l'utiliser, faites .play (lien) !")
                  .addField(".skip", "Sauter une musique  Pour l'utiliser, faites .skip !")
                  .addField(".stop", "Arreter la musique  Pour l'utiliser, faites .stop !")
+                 .addField(".traductionhelp", "Pour affichier l'aide des traductions !")
                  .addField(".google", "Commande pas trop utile mais tu peut faire des recherche google. Pour l'utiliser, faites .google (recherche) !")
                  .addField(".shelp", "❌Afficher les commandes du staff. Mais seule ceux qui ont la perm de kick pourrons y accèder. ❌")
                 .setColor("#0000ff")
@@ -327,6 +328,23 @@ bot.on("message", async function(message) {
         message.reply('https://www.google.fr/#q=' + glg.join('%20'));
         break;
 
+        case "traductionhelp":
+            var embed = new Discord.RichEmbed()
+                 .addField(".tradenfr", "Traduction Anglais ==> Français !") 
+                 .addField(".tradfren", "Traduction Français ==> Anglais !")
+                 .addField(".tradesfr", "Traduction Espagnol ==> Français !")
+                 .addField(".tradfres", "Taduction Français ==> Espagnol !")
+                 .addField(".tradesen", "Traduction Espagnol ==> Anglais !")
+                 .addField(".tradenes", "Taduction Anglais ==> Espagnol !")            
+                .setColor("#00ffcc")
+                .setFooter("Amuse toi a traduire petit enfant !")
+                .setAuthor("Pannel des Traduction")
+                .setDescription("Petit rappelle le, je vais seulement envoyé un liens google traduction !")
+                .setTimestamp()
+                message.delete()
+                message.channel.sendEmbed(embed)
+            break;      
+      
        case "tradenfr":
         let tradenfr = message.content.split(' ');
         tradenfr.shift();
@@ -353,7 +371,14 @@ bot.on("message", async function(message) {
          tradfres.shift();
          console.log("Traduction Français ==> Espagnol");
          message.reply('https://translate.google.fr/#fr/es/' + tradfres.join('%20'));
-         break;       
+         break;      
+      
+        case "tradenes":
+         let tradenes = message.content.split(' ');
+         tradenes.shift();
+         console.log("Traduction Anglais ==> Espagnol");
+         message.reply('https://translate.google.fr/#en/es/' + tradesen.join('%20'))
+         break;     
       
        case "web":
            if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
