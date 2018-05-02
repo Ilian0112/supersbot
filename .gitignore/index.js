@@ -39,6 +39,14 @@ bot.on('message', function(message) {
             message.reply('Bonjour')
         }
 
+       if(message.content === 'ulrik') {
+            message.reply('HEIN ? Quoi lui pourquoi tu parle de lui ? IL EST CON je sais !')
+       }
+ 
+       if(message.content === 'Ulrik') {
+            message.reply('HEIN ? Quoi lui pourquoi tu parle de lui ? IL EST CON je sais !')
+       }
+ 
         if(message.content === 'Ilian') {
             message.channel.sendMessage("On ne juge mon **développeur **! :o")
         }
@@ -214,11 +222,11 @@ bot.on("message", async function(message) {
             }).then(messages => message.channel.bulkDelete(messagecount));
                         message.delete()
         var embed = new Discord.RichEmbed()
-            .addField(".ban", "Cette commande permet de bannir un utilisateur ! Pour l'utiliser, faites .ban @(utilisateur) + (raison)")
-            .addField(".kick", "Cette commande permet de kick un utilisateur ! Pour l'utiliser, faites .kick @(utilisateur) + (raison)")
-             .addField(".purge", "Cette commande permet de supprimé des messages beaucoup plus rapidement ! Pour l'utiliser, faites .purge (nombredemessages)")
-             .addField(".mute", "Cette commande permet de muté un utilisateur pendant un certain temps. Pour l'utiliser, faites .mute @(utilisateur) + (raison)")
-             .addField(".unmute", "Cette commande permet d'unmute un utilisateur. Pour l'utiliser, faites .unmute @(utilisateur)")
+            .addField("s.ban", "Cette commande permet de bannir un utilisateur ! Pour l'utiliser, faites .ban @(utilisateur) + (raison)")
+            .addField("s.kick", "Cette commande permet de kick un utilisateur ! Pour l'utiliser, faites .kick @(utilisateur) + (raison)")
+             .addField("s.purge", "Cette commande permet de supprimé des messages beaucoup plus rapidement ! Pour l'utiliser, faites .purge (nombredemessages)")
+             .addField("s.mute", "Cette commande permet de muté un utilisateur pendant un certain temps. Pour l'utiliser, faites .mute @(utilisateur) + (raison)")
+             .addField("s.unmute", "Cette commande permet d'unmute un utilisateur. Pour l'utiliser, faites .unmute @(utilisateur)")
             .setColor("#cc0000")
             .setFooter("Aide du staff.")
             .setAuthor("Pannel d'aide du staff")
@@ -230,14 +238,14 @@ bot.on("message", async function(message) {
         
         case "help":
             var embed = new Discord.RichEmbed()
-                 .addField(".ping", "Grâce à cette commande, tu pourras savoir ton ping !") 
-                 .addField(".reseau", "Vous donne mes réseaux sociaux !")
-                 .addField(".play", "Jouer une musique !  Pour l'utiliser, faites .play (lien) !")
-                 .addField(".skip", "Sauter une musique  Pour l'utiliser, faites .skip !")
-                 .addField(".stop", "Arreter la musique  Pour l'utiliser, faites .stop !")
-                 .addField(".traductionhelp", "Pour affichier l'aide des traductions !")
-                 .addField(".google", "Commande pas trop utile mais tu peut faire des recherche google. Pour l'utiliser, faites .google (recherche) !")
-                 .addField(".shelp", "❌Afficher les commandes du staff. Mais seule ceux qui ont la perm de kick pourrons y accèder. ❌")
+                 .addField("s.ping", "Grâce à cette commande, tu pourras savoir mon ping !") 
+                 .addField("s.reseau", "Vous donne mes réseaux sociaux !")
+                 .addField("s.play", "Jouer une musique !  Pour l'utiliser, faites .play (lien) !")
+                 .addField("s.skip", "Sauter une musique  Pour l'utiliser, faites .skip !")
+                 .addField("s.stop", "Arreter la musique  Pour l'utiliser, faites .stop !")
+                 .addField("s.traductionhelp", "Pour affichier l'aide des traductions !")
+                 .addField("s.google", "Commande pas trop utile mais tu peut faire des recherche google. Pour l'utiliser, faites .google (recherche) !")
+                 .addField("s.shelp", "❌Afficher les commandes du staff. Mais seule ceux qui ont la perm de kick pourrons y accèder. ❌")
                 .setColor("#0000ff")
                 .setFooter("Idée de commande ? Proposer en MP!")
                 .setAuthor("Pannel d'aide")
@@ -330,12 +338,12 @@ bot.on("message", async function(message) {
 
         case "traductionhelp":
             var embed = new Discord.RichEmbed()
-                 .addField(".tradenfr", "Traduction Anglais ==> Français !") 
-                 .addField(".tradfren", "Traduction Français ==> Anglais !")
-                 .addField(".tradesfr", "Traduction Espagnol ==> Français !")
-                 .addField(".tradfres", "Taduction Français ==> Espagnol !")
-                 .addField(".tradesen", "Traduction Espagnol ==> Anglais !")
-                 .addField(".tradenes", "Taduction Anglais ==> Espagnol !")            
+                 .addField("s.tradenfr", "Traduction Anglais ==> Français !") 
+                 .addField("s.tradfren", "Traduction Français ==> Anglais !")
+                 .addField("s.tradesfr", "Traduction Espagnol ==> Français !")
+                 .addField("s.tradfres", "Taduction Français ==> Espagnol !")
+                 .addField("s.tradesen", "Traduction Espagnol ==> Anglais !")
+                 .addField("s.tradenes", "Taduction Anglais ==> Espagnol !")            
                 .setColor("#00ffcc")
                 .setFooter("Amuse toi a traduire petit enfant !")
                 .setAuthor("Pannel des Traduction")
