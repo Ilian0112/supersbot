@@ -1,7 +1,7 @@
 {
-  "name": "diversionbot",
+  "name": "supersbot",
   "version": "1.0.0",
-  "description": "Bot discord de Diversion !",
+  "description": "Bot discord de Supers Fanne !",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
