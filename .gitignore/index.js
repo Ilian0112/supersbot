@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const YTDL = require("ytdl-core");
-const PREFIX = ".";
+const PREFIX = "s.";
 const queue = new Map();
 const EVERYONE = "@";
 
@@ -24,9 +24,9 @@ function play(connection, message) {
 }
 
 bot.on("ready", function () {
-    bot.user.setGame("SupersBOT V1 - .help |", "https://www.twitch.tv/supers_fanne")
-    bot.user.setUsername("SupersBOT - V1")
-    console.log("SupersBOT V1 - Connecté");
+    bot.user.setGame("SupersBOT V2 - .help |", "https://www.twitch.tv/supers_fanne")
+    bot.user.setUsername("SupersBOT - V2")
+    console.log("SupersBOT V2 - Connecté");
 });
 
 bot.on('message', function(message) {
