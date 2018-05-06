@@ -396,20 +396,24 @@ bot.on("message", async function(message) {
          message.reply('https://translate.google.fr/#en/es/' + tradesen.join('%20'))
          break;     
       
-       case "annonce":
-           if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
-            var messagecount = parseInt(arg2.join(" "));
+         case "annonce":
+         if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
+            var messagecount = parseInt(args2.join(" "));
             message.channel.fetchMessages({
                 limit: messagecount
             }).then(messages => message.channel.bulkDelete(messagecount));
                         message.delete()
-         let annonce = message.content.split(" ");
-         annonce.shift();
-       var embed = new Discord.RichEmbed()
-       .addField("Annonce !", " "+ annonce.join(" "))
-       .setColor("#336699")
-       .setFooter("By Ilian ! ^^")
-       message.delete();
+       let newi = message.content.split(" ");
+       newi.shift();
+     var embed = new Discord.RichEmbed()
+     .addField("Annonce !", " "+ newi.join(" "))
+     .setColor("#FFFB00")
+     .setFooter("By Ilian ! ^^")
+     message.delete();
+     message.channel.send("@everyone Du nouveau sur le serveur")
+     member.guild.channels.find("name", "annonce").sendEmbed(embed);
+     break;
+
        message.channel.send("@everyone Nouvelle annonce")
        member.guild.channels.find("name", "annonce").sendEmbed(embed);
        break;
