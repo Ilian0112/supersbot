@@ -24,7 +24,7 @@ function play(connection, message) {
 }
 
 bot.on("ready", function () {
-    bot.user.setGame("SupersBOT V2 - .help |", "https://www.twitch.tv/supers_fanne")
+    bot.user.setGame("SupersBOT V2 - s.help |", "https://www.twitch.tv/supers_fanne")
     bot.user.setUsername("SupersBOT - V2")
     console.log("SupersBOT V2 - Connecté");
 });
@@ -33,59 +33,63 @@ bot.on('message', function(message) {
 
         if(message.content === 'Salut') {
             message.reply('Bonjour')
+         console.log("Bonjour " + message.author.username + " !")
         }
 
         if(message.content === 'salut') {
             message.reply('Bonjour')
+         console.log("Bonjour " + message.author.username + " !")
         }
-
-       if(message.content === 'ulrik') {
-            message.reply('HEIN ? Quoi lui pourquoi tu parle de lui ? IL EST CON je sais !')
-       }
- 
-       if(message.content === 'Ulrik') {
-            message.reply('HEIN ? Quoi lui pourquoi tu parle de lui ? IL EST CON je sais !')
-       }
  
         if(message.content === 'Ilian') {
             message.channel.sendMessage("On ne juge mon **développeur **! :o")
+         console.log("On ne juge mon dev " + message.author.username + " !")
         }
 
         if(message.content === 'ilian') {
             message.channel.sendMessage("On ne juge mon **développeur** ! :o")
+         console.log("On ne juge mon dev " + message.author.username + " !")
         }
+   
 
         if(message.content === 'ça va') {
             message.channel.sendMessage("Je vais toujours bien, je suis un robot!")
+         console.log("Comment va tu " + message.author.username + " ?")
         }
             
         if(message.content === 'Ça va') {
             message.channel.sendMessage("Je vais toujours bien, je suis un robot!")
+         console.log("Comment va tu " + message.author.username + " ?")
         }
 
         if(message.content === 'Qui est la') {
             message.channel.sendMessage("MOIII")
-        
+          console.log("Je suis la " + message.author.username + " !")
         }
         if(message.content === 'Bye') {
             message.channel.sendMessage('À Bientôt ! ^^')
+         console.log("Bye " + message.author.username + " !")
         
         }
         if(message.content === 'bye') {
             message.channel.sendMessage('À Bientôt ! ^^')
+         console.log("Bye " + message.author.username + " !")
         }
 
         if(message.content === 'wsh') {
             message.channel.sendMessage('wshh frr')
+          console.log("Wshh " + message.author.username + " !")
         }
     
         if(message.content === 'Wsh') {
             message.channel.sendMessage('wshh frr')
+         console.log("Wshh " + message.author.username + " !")
         }
     
         if(message.content === 'Ta mère la grosse pute') {
             message.reply('Surveille ton language jeune insolents !')
             message.delete()
+           console.log("C'est quoi ce language " + message.author.username + " !")
         }
     
     
@@ -133,11 +137,11 @@ bot.on("message", async function(message) {
     switch (args[0].toLowerCase()) {
         case "play":
             if (!args[1]) {
-             message.channel.sendMessage("[SupersBOT Musique] - Vous devez mettre un lien.");   
+             message.channel.sendMessage("[```SupersBOT Musique```] - **Vous devez mettre un lien**.");   
              return;
             }
             if(!message.member.voiceChannel) {
-             message.channel.sendMessage("[SupersBOT Musique] - Vous devez être dans un salon vocal.");   
+             message.channel.sendMessage("[```SupersBOT Musique```] - **Vous devez être dans un salon vocal**.");   
              return;
             }
             
@@ -152,30 +156,22 @@ bot.on("message", async function(message) {
             if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
                play(connection, message) 
             });
-        break;    
-      
-        case "skip":
-             if(!message.member.voiceChannel) {
-             message.channel.sendMessage("[SupersBOT Musique] - Vous devez être dans un salon vocal.");   
-             return;
-            }
-            var server = servers[message.guild.id];
-            if(server.dispatcher) server.dispatcher.end();
+          console.log("Ouais de la musique " + message.author.username + " !")
         break;    
       
         case "stop":
              if(!message.member.voiceChannel) {
-             message.channel.sendMessage("[SupersBOT Musique] - Vous devez être dans un salon vocal.");   
+             message.channel.sendMessage("[```SupersBOT Musique```] - **Vous devez être dans un salon vocal**.");   
              return;
             }
-             const serverQueue = queue.get(message.guild.id);
-             var server = servers[message.guild.id];
-             if (!serverQueue) return message.channel.send("[SupersBOT Musique] - Aucune musique est joué, je ne peux donc pas exécuter cette commande. ❌")
-            if(message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
-     
+            var server = servers[message.guild.id];
+            if(server.dispatcher) server.dispatcher.end();
+          console.log("Oh plus de musique " + message.author.username + " !")
         break;    
+      
         case "membres":
             message.reply("Nous sommes``" + message.guild.memberCount + " membres`` sur le discord !");
+        console.log("Tu sais qu'on combien on est maintenant " + message.author.username + " !( " + message.guild.memberCount + " )")
         break
         case "unmute":
         if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
@@ -184,7 +180,8 @@ bot.on("message", async function(message) {
         if (message.mentions.users.size < 1) return message.reply("À qui je retire la sanction: MUTE ?")
         member.removeRole(roleMute)
         message.channel.sendMessage(user.toString() + " a bien été unmute ✅")
-        
+       console.log("Tu a unmute quelqu'un toi " + message.author.username + " !")  
+      
         var embed = new Discord.RichEmbed()
         .addField("Commande :", "UNMUTE")
         .addField("Utilisateur :", user.username)
@@ -195,15 +192,17 @@ bot.on("message", async function(message) {
         .setTimestamp()
         member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
         break;
-        case "mute":
+       
+      case "mute":
         if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu n'as pas la permission d'exécuter la commande. :x:");
         if(!modlog) return message.reply("Je ne trouve pas de channel log.");  
         if (!reasontimed) return message.reply("Tu as oublié la raison ! :D")
         var member = message.mentions.members.first();
         if (message.mentions.users.size < 1) return message.reply("À qui je dois mettre la sanction: MUTE")
         message.channel.sendMessage(member.toString() + " a bien été mute. ✅")
-        member.addRole(roleMute)
-
+        member.addRole(member.guild.roles.find("name", "Mute");
+       console.log("Tu a mute quelqu'un toi " + message.author.username + " !")
+                       
         var embed = new Discord.RichEmbed()
         .addField("Action :", "Mute")
         .addField("Utilisateur :", user.toString())
@@ -234,6 +233,7 @@ bot.on("message", async function(message) {
             .setTimestamp()
             message.delete()
             message.channel.sendEmbed(embed)
+             console.log("AIDE STAFF " + message.author.username + " !")
         break;    
         
         case "help":
@@ -253,15 +253,18 @@ bot.on("message", async function(message) {
                 .setTimestamp()
                 message.delete()
                 message.channel.sendEmbed(embed)
+             console.log("Ta eu besoin d'aide toi " + message.author.username + " !")
             break;
-        case "kick":
+       
+     case "kick":
             if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu n'as pas la permission d'exécuter la commande. :x:");
             if(!modlog) return message.reply("Je ne trouve pas de channel log.");
             if (reason.length < 1) return message.reply("Tu as oublié la raison ! :D");
             if (message.mentions.users.size < 1) return message.reply("Tu n'as pas mis son pseudo au complet ! :o")
             message.guild.member(user).kick();
             message.channel.send(user.toString() + " a bien été kick ✅")
-
+       console.log("Mais on kick des gens " + message.author.username + " !")
+      
             var embed = new Discord.RichEmbed()
             .addField("Commande :", "KICK")
             .addField("Utilisateur :", user.username)
@@ -284,7 +287,8 @@ bot.on("message", async function(message) {
             
             message.guild.ban(user, 2);
             message.channel.send(user.toString() + " a bien été banni ✅")
-
+       console.log("Tu a ban quelqu'un toi " + message.author.username + " !")
+      
             var embed = new Discord.RichEmbed()
             .addField("Commande :", "BAN")
             .addField("Utilisateur :", user.username)
@@ -299,8 +303,9 @@ bot.on("message", async function(message) {
             bot.channels.get('434403059825901570').sendMessage(":white_check_mark: Le joueur " + user.username + " à bien été kick pour: " + reason);
             
             message.delete();
-            break;
-        case "purge":
+        break;
+        
+     case "purge":
             if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
             var messagecount = parseInt(args2.join(" "));
             message.channel.fetchMessages({
@@ -316,23 +321,24 @@ bot.on("message", async function(message) {
             .setFooter("Ouf ! Sa as fait un bon ménage dans le serveur ! ^^")
             message.delete()
             member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
+             console.log("Tu a purge un salon toi " + message.author.username + " !")
             break;
 
 
        case "reseau":
        message.reply('❌**DESACTIVER**❌');
-       message.delete();
+   console.log("Mes reseau " + message.author.username + " !")
        break;
 
        case "ping":
         message.channel.sendMessage("Pong! Tu as actuellement `" + bot.ping + " ms !` :D");
-        message.delete();
+        console.log("Tu a le ping de l'api " + message.author.username + " !")
         break; 
             
        case "google":
         let glg = message.content.split(' ');
         glg.shift();
-        console.log("J'ai rechercher!");
+        console.log("J'ai rechercher!" + message.author.username + " !!");
         message.reply('https://www.google.fr/#q=' + glg.join('%20'));
         break;
 
@@ -351,6 +357,7 @@ bot.on("message", async function(message) {
                 .setTimestamp()
                 message.delete()
                 message.channel.sendEmbed(embed)
+             console.log("Il veut traduire " + message.author.username + " !")
             break;      
       
        case "tradenfr":
