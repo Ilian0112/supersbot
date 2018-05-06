@@ -396,7 +396,7 @@ bot.on("message", async function(message) {
          message.reply('https://translate.google.fr/#en/es/' + tradesen.join('%20'))
          break;     
       
-       case "web":
+       case "annonce":
            if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
             var messagecount = parseInt(arg2.join(" "));
             message.channel.fetchMessages({
@@ -411,27 +411,8 @@ bot.on("message", async function(message) {
        .setFooter("By Ilian ! ^^")
        message.delete();
        message.channel.send("@everyone Nouvelle annonce")
-       member.guild.channels.find("name", "🔔annonce").sendEmbed(embed);
+       member.guild.channels.find("name", "annonce").sendEmbed(embed);
        break;
-
-     case "newstaff":
-         if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
-            var messagecount = parseInt(args2.join(" "));
-            message.channel.fetchMessages({
-                limit: messagecount
-            }).then(messages => message.channel.bulkDelete(messagecount));
-                        message.delete()
-     let staff = message.content.split(" ");
-     staff.shift();
-   var embed = new Discord.RichEmbed()
-   .addField("Annonce!", " "+ staff.join(" "))
-   .setColor("#FF0000")
-   .setFooter("By Ilian ! ^^")
-   message.delete();
-   message.channel.send("@everyone Nouvelle annonce")
-   member.guild.channels.find("name", "📍staff📍").sendEmbed(embed);
-   break;
-
 
         default:
             message.channel.sendMessage("Commande invalide ^^ Fait .help pour voir toutes les commandes disponibles !")
