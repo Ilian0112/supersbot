@@ -200,9 +200,9 @@ bot.on("message", async function(message) {
         var member = message.mentions.members.first();
         if (message.mentions.users.size < 1) return message.reply("À qui je dois mettre la sanction: MUTE")
         message.channel.sendMessage(member.toString() + " a bien été mute. ✅")
-        member.addRole(member.guild.roles.find("name", "Mute");
+        member.addRole(roleMute)
        console.log("Tu a mute quelqu'un toi " + message.author.username + " !")
-                       
+             
         var embed = new Discord.RichEmbed()
         .addField("Action :", "Mute")
         .addField("Utilisateur :", user.toString())
@@ -213,6 +213,7 @@ bot.on("message", async function(message) {
         .setTimestamp()
         member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
         break;
+
         case "shelp":
             if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
             var messagecount = parseInt(args2.join(" "));
