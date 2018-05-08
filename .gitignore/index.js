@@ -91,8 +91,7 @@ bot.on('message', function(message) {
             message.delete()
            console.log("C'est quoi ce language " + message.author.username + " !")
         }
-    
-    
+
     });
 
 bot.on("guildMemberAdd", function(member) {
@@ -125,6 +124,8 @@ bot.on("message", async function(message) {
     var guild = message.guild;
     
     var member = message.member;
+
+    var roleAbo = member.guild.roles.find("name", "Abonné ?")
 
     var roleJoueur= member.guild.roles.find("name", "Abonné ?")
     
@@ -193,6 +194,11 @@ bot.on("message", async function(message) {
         member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
         break;
        
+    case "removeabo?":
+    member.removeRole(roleAbo)
+    message.reply("à bien enlever son role Abonné ? ✅")
+    break;
+
       case "mute":
         if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu n'as pas la permission d'exécuter la commande. :x:");
         if(!modlog) return message.reply("Je ne trouve pas de channel log.");  
@@ -396,24 +402,20 @@ bot.on("message", async function(message) {
          message.reply('https://translate.google.fr/#en/es/' + tradesen.join('%20'))
          break;     
       
-         case "annonce":
-         if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
-            var messagecount = parseInt(args2.join(" "));
+       case "annonce":
+           if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
+            var messagecount = parseInt(arg2.join(" "));
             message.channel.fetchMessages({
                 limit: messagecount
             }).then(messages => message.channel.bulkDelete(messagecount));
                         message.delete()
-       let newi = message.content.split(" ");
-       newi.shift();
-     var embed = new Discord.RichEmbed()
-     .addField("Annonce !", " "+ newi.join(" "))
-     .setColor("#FFFB00")
-     .setFooter("By Ilian ! ^^")
-     message.delete();
-     message.channel.send("@everyone Du nouveau sur le serveur")
-     member.guild.channels.find("name", "annonce").sendEmbed(embed);
-     break;
-
+         let annonce = message.content.split(" ");
+         annonce.shift();
+       var embed = new Discord.RichEmbed()
+       .addField("Annonce !", " "+ annonce.join(" "))
+       .setColor("#336699")
+       .setFooter("By Ilian ! ^^")
+       message.delete();
        message.channel.send("@everyone Nouvelle annonce")
        member.guild.channels.find("name", "annonce").sendEmbed(embed);
        break;
