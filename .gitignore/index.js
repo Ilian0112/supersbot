@@ -485,7 +485,7 @@ bot.on("message", async function(message) {
             }).then(messages => message.channel.bulkDelete(messagecount));
                         message.delete()
      let staffs = message.content.split(" ");
-     staff.shift();
+     staffs.shift();
    var embed = new Discord.RichEmbed()
    .addField("Annonce!", " "+ staffs.join(" "))
    .setColor("#FF0000")
