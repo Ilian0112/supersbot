@@ -484,10 +484,10 @@ bot.on("message", async function(message) {
                 limit: messagecount
             }).then(messages => message.channel.bulkDelete(messagecount));
                         message.delete()
-     let staff@ = message.content.split(" ");
+     let staffs = message.content.split(" ");
      staff.shift();
    var embed = new Discord.RichEmbed()
-   .addField("Annonce!", " "+ staff@.join(" "))
+   .addField("Annonce!", " "+ staffs.join(" "))
    .setColor("#FF0000")
    .setFooter("By Ilian ! ^^")
    message.delete();
