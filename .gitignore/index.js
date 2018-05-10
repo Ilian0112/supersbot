@@ -413,10 +413,20 @@ bot.on("message", async function(message) {
        break;
 
        case "ping":
-        message.channel.sendMessage("Pong! Tu as actuellement `" + bot.ping + " ms !` :D");
-        console.log("Tu a le ping de l'api " + message.author.username + " !")
+            var ping_embed = new Discord.RichEmbed()
+                .addField(':clock2: Calcul en cours...', "Merci de patienter quelques instants !")
+            let startTime = Date.now();
+            message.channel.send(ping_embed).then(message => message.edit(pong_embed));
+            const fs = require("fs");
+            var pong_embed = new Discord.RichEmbed()
+                .setColor('#FFFFFF')
+                .setTitle(':ping_pong: Pong !')
+                .addField(":clock2: Temps :", `${Date.now() - startTime} millisecondes`, true)
+                .addField(":heartpulse: API Discord :", `${bot.ping} millisecondes`, true)
         break; 
-            
+     
+        
+
        case "google":
         let glg = message.content.split(' ');
         glg.shift();
