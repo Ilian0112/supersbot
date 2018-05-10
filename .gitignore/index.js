@@ -95,7 +95,7 @@ bot.on('message', function(message) {
     });
 
 bot.on("guildMemberAdd", function(member) {
-    member.guild.channels.find("name", "🤖bot-logs🤖").sendMessage(member.toString() + " Bienvenue sur le discord de **Supers Fanne** ! :white_check_mark:");
+    member.guild.channels.find("name", "🤖bot-logs🤖").sendMessage(member.toString() + " Bienvenue sur ``" + message.guild.name + "`` ! :white_check_mark:");
     member.addRole(member.guild.roles.find("name", "Abonné ?"));
 });
 
