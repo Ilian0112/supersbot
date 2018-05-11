@@ -304,7 +304,6 @@ bot.on("message", async function(message) {
       case "unkick":
         if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu n'as pas la permission d'exécuter la commande. :x:");
         if(!modlog) return message.reply("Je ne trouve pas de channel log.");  
-        if (!reasontimed) return message.reply("Tu as oublié la raison ! :D")
         var member = message.mentions.members.first();
         if (message.mentions.users.size < 1) return message.reply("À qui je dois enlevé la sanction: kick")
         message.channel.sendMessage(member.toString() + " a bien été unkick. ✅")
@@ -315,7 +314,6 @@ bot.on("message", async function(message) {
         .addField("Action :", "unKick")
         .addField("Utilisateur :", user.toString())
         .addField("Modérateur :", message.author.toString())
-        .addField("Raison :", reasontimed)
         .setColor("#FFFF00")
         .setAuthor(message.author.username, message.author.avatarURL)
         .setTimestamp()
@@ -354,10 +352,9 @@ bot.on("message", async function(message) {
         member.guild.channels.find("name", "ban").sendEmbed(embed);
         break;
        
-      case "ban":
+      case "unban":
         if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu n'as pas la permission d'exécuter la commande. :x:");
         if(!modlog) return message.reply("Je ne trouve pas de channel log.");  
-        if (!reasontimed) return message.reply("Tu as oublié la raison ! :D")
         var member = message.mentions.members.first();
         if (message.mentions.users.size < 1) return message.reply("À qui je enlevé mettre la sanction: Ban")
         message.channel.sendMessage(member.toString() + " a bien été ban. ✅")
@@ -368,7 +365,6 @@ bot.on("message", async function(message) {
         .addField("Action :", "UnBan")
         .addField("Utilisateur :", user.toString())
         .addField("Modérateur :", message.author.toString())
-        .addField("Raison :", reasontimed)
         .setColor("#FFFF00")
         .setAuthor(message.author.username, message.author.avatarURL)
         .setTimestamp()
