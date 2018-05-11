@@ -178,6 +178,7 @@ bot.on("message", async function(message) {
             message.reply("Nous sommes``" + message.guild.memberCount + " membres`` sur le discord !");
         console.log("Tu sais qu'on combien on est maintenant " + message.author.username + " !( " + message.guild.memberCount + " )")
         break
+        
         case "unmute":
         if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
         if(!modlog) return message.reply("Je ne trouve pas de channel log.");
@@ -188,7 +189,7 @@ bot.on("message", async function(message) {
        console.log("Tu a unmute quelqu'un toi " + message.author.username + " !")  
       
         var embed = new Discord.RichEmbed()
-        .addField("Commande :", "UNMUTE")
+        .addField("Commande :", "unmute")
         .addField("Utilisateur :", user.username)
         .addField("Modérateur :", message.author.username)
         .addField("Heure:", message.channel.createdAt)
@@ -269,123 +270,110 @@ bot.on("message", async function(message) {
              console.log("Ta eu besoin d'aide toi " + message.author.username + " !")
             break;
        
-     case "kick":
-            if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu n'as pas la permission d'exécuter la commande. :x:");
-            if(!modlog) return message.reply("Je ne trouve pas de channel log.");
-            if (reason.length < 1) return message.reply("Tu as oublié la raison ! :D");
-            if (message.mentions.users.size < 1) return message.reply("Tu n'as pas mis son pseudo au complet ! :o")
-            member.addRole(rolekick)
-            message.channel.send(user.toString() + " a bien été kick ✅")
-       console.log("Mais on kick des gens " + message.author.username + " !")
-      
-            var embed = new Discord.RichEmbed()
-            .addField("Commande :", "kick")
-            .addField("Utilisateur :", user.username)
-            .addField("Modérateur :", message.author.username)
-            .addField("Raison : ", reason)
-            .addField("Heure:", message.channel.createdAt)
-            .setColor("#99ff33")
-            .setAuthor(message.author.username, message.author.avatarURL)
-            .setTimestamp()
-            member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
-
-            var embed = new Discord.RichEmbed()
-            .addField("Commande :", "kick")
-            .addField("Utilisateur :", user.username)
-            .addField("Modérateur :", message.author.username)
-            .addField("Raison : ", reason)
-            .addField("Heure:", message.channel.createdAt)
-            .setColor("#99ff33")
-            .setAuthor(message.author.username, message.author.avatarURL)
-            .setTimestamp()
-            member.guild.channels.find("name", "kick").sendEmbed(embed);
-
-            bot.channels.get('434403059825901570').sendMessage(":white_check_mark: Le membre " + user.username + " à bien été kick pour: " + reason);
-       
-            message.delete();
-            break;
-
-            case "unkick":
-            if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu n'as pas la permission d'exécuter la commande. :x:");
-            if(!modlog) return message.reply("Je ne trouve pas de channel log.");
-            if (message.mentions.users.size < 1) return message.reply("Tu n'as pas mis son pseudo au complet ! :o")
-            member.removeRole(rolekick)
-            message.channel.send(user.toString() + " a bien été unkick ✅")
-       console.log("Mais on unkick des gens " + message.author.username + " !")
-      
-            var embed = new Discord.RichEmbed()
-            .addField("Commande :", "unkick")
-            .addField("Utilisateur :", user.username)
-            .addField("Modérateur :", message.author.username)
-            .addField("Heure:", message.channel.createdAt)
-            .setColor("#99ff33")
-            .setAuthor(message.author.username, message.author.avatarURL)
-            .setTimestamp()
-            member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
-            bot.channels.get('434403059825901570').sendMessage(":white_check_mark: Le membre " + user.username + " à bien été unkick");
-       
-            message.delete();
-            break;
-
-
-            case "ban":
-            if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande.");
-            if(!modlog) return message.reply("Je ne trouve pas de channel log.");
-            if (reason.length < 1) return message.reply("Tu as oublié la raison.");
-            if (message.mentions.users.size < 1) return message.reply("Tu as oublié de préciser qui je dois bannir..")
-            member.addRole(roleban)
-            message.channel.send(user.toString() + " a bien été banni ✅")
-       console.log("Tu a ban quelqu'un toi " + message.author.username + " !")
-      
-            var embed = new Discord.RichEmbed()
-            .addField("Commande :", "BAN")
-            .addField("Utilisateur :", user.username)
-            .addField("Modérateur :", message.author.username)
-            .addField("Raison : ", reason)
-            .addField("Heure:", message.channel.createdAt)
-            .setColor("#ff9933")
-            .setAuthor(message.author.username, message.author.avatarURL)
-            .setTimestamp()
-            member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
-            
-            var embed = new Discord.RichEmbed()
-            .addField("Commande :", "BAN")
-            .addField("Utilisateur :", user.username)
-            .addField("Modérateur :", message.author.username)
-            .addField("Raison : ", reason)
-            .addField("Heure:", message.channel.createdAt)
-            .setColor("#ff9933")
-            .setAuthor(message.author.username, message.author.avatarURL)
-            .setTimestamp()
-            member.guild.channels.find("name", "ban").sendEmbed(embed);
-
-            bot.channels.get('434403059825901570').sendMessage(":white_check_mark: Le membre " + user.username + " à bien été ban pour: " + reason);
-            
-            message.delete();
-        break;
-       
-        case "unban":
-        if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande.");
-        if(!modlog) return message.reply("Je ne trouve pas de channel log.");
-        if (message.mentions.users.size < 1) return message.reply("Tu as oublié de préciser a qui je dois enlever le ban.")
-        member.removeRole(roleban)
-        message.channel.send(user.toString() + " a bien été unban ✅")
-   console.log("Tu a unban quelqu'un toi " + message.author.username + " !")
-  
+      case "kick":
+        if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu n'as pas la permission d'exécuter la commande. :x:");
+        if(!modlog) return message.reply("Je ne trouve pas de channel log.");  
+        if (!reasontimed) return message.reply("Tu as oublié la raison ! :D")
+        var member = message.mentions.members.first();
+        if (message.mentions.users.size < 1) return message.reply("À qui je dois mettre la sanction: kick")
+        message.channel.sendMessage(member.toString() + " a bien été kick. ✅")
+        member.addRole(rolekick)
+       console.log("Tu a kick quelqu'un toi " + message.author.username + " !")
+             
         var embed = new Discord.RichEmbed()
-        .addField("Commande :", "UNBAN")
-        .addField("Utilisateur :", user.username)
-        .addField("Modérateur :", message.author.username)
-        .addField("Heure:", message.channel.createdAt)
-        .setColor("#ff9933")
+        .addField("Action :", "Kick")
+        .addField("Utilisateur :", user.toString())
+        .addField("Modérateur :", message.author.toString())
+        .addField("Raison :", reasontimed)
+        .setColor("#FFFF00")
         .setAuthor(message.author.username, message.author.avatarURL)
         .setTimestamp()
         member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
-    
-        bot.channels.get('434403059825901570').sendMessage(":white_check_mark: Le membre " + user.username + " à bien été unban pour: ");
-        
-        message.delete();
-    break;        
+      
+         var embed = new Discord.RichEmbed()
+        .addField("Action :", "Kick")
+        .addField("Utilisateur :", user.toString())
+        .addField("Modérateur :", message.author.toString())
+        .addField("Raison :", reasontimed)
+        .setColor("#FFFF00")
+        .setAuthor(message.author.username, message.author.avatarURL)
+        .setTimestamp()
+        member.guild.channels.find("name", "kick").sendEmbed(embed);
+        break;
+
+      case "unkick":
+        if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu n'as pas la permission d'exécuter la commande. :x:");
+        if(!modlog) return message.reply("Je ne trouve pas de channel log.");  
+        if (!reasontimed) return message.reply("Tu as oublié la raison ! :D")
+        var member = message.mentions.members.first();
+        if (message.mentions.users.size < 1) return message.reply("À qui je dois enlevé la sanction: kick")
+        message.channel.sendMessage(member.toString() + " a bien été unkick. ✅")
+        member.removeRole(rolekick)
+       console.log("Tu a unkick quelqu'un toi " + message.author.username + " !")
+             
+        var embed = new Discord.RichEmbed()
+        .addField("Action :", "unKick")
+        .addField("Utilisateur :", user.toString())
+        .addField("Modérateur :", message.author.toString())
+        .addField("Raison :", reasontimed)
+        .setColor("#FFFF00")
+        .setAuthor(message.author.username, message.author.avatarURL)
+        .setTimestamp()
+        member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
+        break;
+
+
+      case "ban":
+        if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu n'as pas la permission d'exécuter la commande. :x:");
+        if(!modlog) return message.reply("Je ne trouve pas de channel log.");  
+        if (!reasontimed) return message.reply("Tu as oublié la raison ! :D")
+        var member = message.mentions.members.first();
+        if (message.mentions.users.size < 1) return message.reply("À qui je dois mettre la sanction: Ban")
+        message.channel.sendMessage(member.toString() + " a bien été ban. ✅")
+        member.addRole(roleban)
+       console.log("Tu a b n quelqu'un toi " + message.author.username + " !")
+             
+        var embed = new Discord.RichEmbed()
+        .addField("Action :", "Bannissement")
+        .addField("Utilisateur :", user.toString())
+        .addField("Modérateur :", message.author.toString())
+        .addField("Raison :", reasontimed)
+        .setColor("#FFFF00")
+        .setAuthor(message.author.username, message.author.avatarURL)
+        .setTimestamp()
+        member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
+      
+         var embed = new Discord.RichEmbed()
+        .addField("Action :", "Bannissement")
+        .addField("Utilisateur :", user.toString())
+        .addField("Modérateur :", message.author.toString())
+        .addField("Raison :", reasontimed)
+        .setColor("#FFFF00")
+        .setAuthor(message.author.username, message.author.avatarURL)
+        .setTimestamp()
+        member.guild.channels.find("name", "ban").sendEmbed(embed);
+        break;
+       
+      case "ban":
+        if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu n'as pas la permission d'exécuter la commande. :x:");
+        if(!modlog) return message.reply("Je ne trouve pas de channel log.");  
+        if (!reasontimed) return message.reply("Tu as oublié la raison ! :D")
+        var member = message.mentions.members.first();
+        if (message.mentions.users.size < 1) return message.reply("À qui je enlevé mettre la sanction: Ban")
+        message.channel.sendMessage(member.toString() + " a bien été ban. ✅")
+        member.removeRole(roleban)
+       console.log("Tu a unban quelqu'un toi " + message.author.username + " !")
+             
+        var embed = new Discord.RichEmbed()
+        .addField("Action :", "UnBan")
+        .addField("Utilisateur :", user.toString())
+        .addField("Modérateur :", message.author.toString())
+        .addField("Raison :", reasontimed)
+        .setColor("#FFFF00")
+        .setAuthor(message.author.username, message.author.avatarURL)
+        .setTimestamp()
+        member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
+        break;       
 
      case "purge":
             if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
