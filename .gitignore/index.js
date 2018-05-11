@@ -180,7 +180,7 @@ bot.on("message", async function(message) {
         break
         
         case "unmute":
-        if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
+        if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
         if(!modlog) return message.reply("Je ne trouve pas de channel log.");
         var member = message.mentions.members.first();
         if (message.mentions.users.size < 1) return message.reply("À qui je retire la sanction: MUTE ?")
@@ -205,7 +205,7 @@ bot.on("message", async function(message) {
     break;
 
       case "mute":
-        if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.sendMessage("Tu n'as pas la permission d'exécuter la commande. :x:");
+        if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu n'as pas la permission d'exécuter la commande. :x:");
         if(!modlog) return message.reply("Je ne trouve pas de channel log.");  
         if (!reasontimed) return message.reply("Tu as oublié la raison ! :D")
         var member = message.mentions.members.first();
@@ -376,7 +376,7 @@ bot.on("message", async function(message) {
         break;       
 
      case "purge":
-            if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
+            if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
             var messagecount = parseInt(args2.join(" "));
             message.channel.fetchMessages({
                 limit: messagecount
@@ -396,8 +396,17 @@ bot.on("message", async function(message) {
 
 
        case "reseau":
-       message.reply('❌**DESACTIVER**❌');
-   console.log("Mes reseau " + message.author.username + " !")
+            var embed = new Discord.RichEmbed()
+                 .addField("Instagram", "A VENIR. ") 
+                 .addField("Twitter", "A VENIR.")
+                 .addField("Facebook", "A VENIR.")
+                .setFooter("By Ilian")
+                .setAuthor("Réseaux Sociaux De Supers Fanne")
+                .setDescription("Pour l'actualité !")
+                .setTimestamp()
+                message.delete()
+                message.channel.sendEmbed(embed)
+    console.log("Mes reseau " + message.author.username + " !")
        break;
 
        case "ping":
@@ -412,9 +421,7 @@ bot.on("message", async function(message) {
                 .addField(":clock2: Temps :", `${Date.now() - startTime} millisecondes`, true)
                 .addField(":heartpulse: API Discord :", `${bot.ping} millisecondes`, true)
         break; 
-     
-        
-
+    
        case "google":
         let glg = message.content.split(' ');
         glg.shift();
