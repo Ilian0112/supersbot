@@ -30,63 +30,8 @@ bot.on("ready", function () {
 });
 
 bot.on('message', function(message) {
-
-        if(message.content === 'Salut') {
-            message.reply('Bonjour')
-         console.log("Bonjour " + message.author.username + " !")
-        }
-
-        if(message.content === 'salut') {
-            message.reply('Bonjour')
-         console.log("Bonjour " + message.author.username + " !")
-        }
- 
-        if(message.content === 'Ilian') {
-            message.channel.sendMessage("On ne juge mon **développeur **! :o")
-         console.log("On ne juge mon dev " + message.author.username + " !")
-        }
-
-        if(message.content === 'ilian') {
-            message.channel.sendMessage("On ne juge mon **développeur** ! :o")
-         console.log("On ne juge mon dev " + message.author.username + " !")
-        }
-   
-
-        if(message.content === 'ça va') {
-            message.channel.sendMessage("Je vais toujours bien, je suis un robot!")
-         console.log("Comment va tu " + message.author.username + " ?")
-        }
-            
-        if(message.content === 'Ça va') {
-            message.channel.sendMessage("Je vais toujours bien, je suis un robot!")
-         console.log("Comment va tu " + message.author.username + " ?")
-        }
-
-        if(message.content === 'Qui est la') {
-            message.channel.sendMessage("MOIII")
-          console.log("Je suis la " + message.author.username + " !")
-        }
-        if(message.content === 'Bye') {
-            message.channel.sendMessage('À Bientôt ! ^^')
-         console.log("Bye " + message.author.username + " !")
-        
-        }
-        if(message.content === 'bye') {
-            message.channel.sendMessage('À Bientôt ! ^^')
-         console.log("Bye " + message.author.username + " !")
-        }
-
-        if(message.content === 'wsh') {
-            message.channel.sendMessage('wshh frr')
-          console.log("Wshh " + message.author.username + " !")
-        }
     
-        if(message.content === 'Wsh') {
-            message.channel.sendMessage('wshh frr')
-         console.log("Wshh " + message.author.username + " !")
-        }
-    
-        if(message.content === 'Ta mère la grosse pute') {
+       if(message.content === 'Ta mère la grosse pute') { // # cencure
             message.reply('Surveille ton language jeune insolents !')
             message.delete()
            console.log("C'est quoi ce language " + message.author.username + " !")
@@ -233,13 +178,13 @@ bot.on("message", async function(message) {
             }).then(messages => message.channel.bulkDelete(messagecount));
                         message.delete()
         var embed = new Discord.RichEmbed()
-            .addField("s.ban", "Cette commande permet de bannir un utilisateur ! Pour l'utiliser, faites .ban @(utilisateur) + (raison)")
-            .addField("s.kick", "Cette commande permet de kick un utilisateur ! Pour l'utiliser, faites .kick @(utilisateur) + (raison)")
-            .addField("s.unban", "Cette commande permet de unban un utilisateur ! Pour l'utiliser, faites .unban @(utilisateur)")
-            .addField("s.unkick", "Cette commande permet de unkick un utilisateur ! Pour l'utiliser, faites .unkick @(utilisateur)")
-             .addField("s.purge", "Cette commande permet de supprimé des messages beaucoup plus rapidement ! Pour l'utiliser, faites .purge (nombredemessages)")
-             .addField("s.mute", "Cette commande permet de muté un utilisateur pendant un certain temps. Pour l'utiliser, faites .mute @(utilisateur) + (raison)")
-             .addField("s.unmute", "Cette commande permet d'unmute un utilisateur. Pour l'utiliser, faites .unmute @(utilisateur)")
+            .addField(PREFIX + "ban", "Cette commande permet de bannir un utilisateur ! Pour l'utiliser, faites " + PREFIX + "ban @(utilisateur) + (raison)")
+            .addField(PREFIX + "kick", "Cette commande permet de kick un utilisateur ! Pour l'utiliser, faites " + PREFIX + "kick @(utilisateur) + (raison)")
+            .addField(PREFIX + "unban", "Cette commande permet de unban un utilisateur ! Pour l'utiliser, faites " + PREFIX + "unban @(utilisateur)")
+            .addField(PREFIX + "unkick", "Cette commande permet de unkick un utilisateur ! Pour l'utiliser, faites " + PREFIX + "unkick @(utilisateur)")
+             .addField(PREFIX + "purge", "Cette commande permet de supprimé des messages beaucoup plus rapidement ! Pour l'utiliser, faites " + PREFIX + "purge (nombredemessages)")
+             .addField(PREFIX + "mute", "Cette commande permet de muté un utilisateur pendant un certain temps. Pour l'utiliser, faites " + PREFIX + "mute @(utilisateur) + (raison)")
+             .addField(PREFIX + "unmute", "Cette commande permet d'unmute un utilisateur. Pour l'utiliser, faites " + PREFIX + "unmute @(utilisateur)")
             .setColor("#cc0000")
             .setFooter("Aide du staff.")
             .setAuthor("Pannel d'aide du staff")
@@ -254,11 +199,11 @@ bot.on("message", async function(message) {
             var embed = new Discord.RichEmbed()
                  .addField(PREFIX + "botinfo", "Grâce à cette commande, tu pourras savoir mes info !") 
                  .addField(PREFIX + "reseau", "Vous donne mes réseaux sociaux !")
-                 .addField(PREFIX + "play", "Jouer une musique !  Pour l'utiliser, faites s.play (lien) !")
-                 .addField(PREFIX + "skip", "Sauter une musique  Pour l'utiliser, faite s.skip !")
-                 .addField(PREFIX + "stop", "Arreter la musique  Pour l'utiliser, faites s.stop !")
+                 .addField(PREFIX + "play", "Jouer une musique !  Pour l'utiliser, faites " + PREFIX + "play (lien) !")
+                 .addField(PREFIX + "skip", "Sauter une musique  Pour l'utiliser, faite " + PREFIX + "skip !")
+                 .addField(PREFIX + "stop", "Arreter la musique  Pour l'utiliser, faites " + PREFIX + "stop !")
                  .addField(PREFIX + "traductionhelp", "Pour affichier l'aide des traductions !")
-                 .addField(PREFIX + "google", "Commande pas trop utile mais tu peut faire des recherche google. Pour l'utiliser, faites s.google (recherche) !")
+                 .addField(PREFIX + "google", "Commande pas trop utile mais tu peut faire des recherche google. Pour l'utiliser, faites " + PREFIX + "google (recherche) !")
                  .addField(PREFIX + "shelp", "❌Afficher les commandes du staff. Mais seule ceux qui ont la perm de kick pourrons y accèder. ❌")
                 .setColor("#0000ff")
                 .setFooter("Idée de commande ? Proposer en MP!")
@@ -414,12 +359,12 @@ bot.on("message", async function(message) {
 
         case "traductionhelp":
             var embed = new Discord.RichEmbed()
-                 .addField("s.tradenfr", "Traduction Anglais ==> Français !") 
-                 .addField("s.tradfren", "Traduction Français ==> Anglais !")
-                 .addField("s.tradesfr", "Traduction Espagnol ==> Français !")
-                 .addField("s.tradfres", "Taduction Français ==> Espagnol !")
-                 .addField("s.tradesen", "Traduction Espagnol ==> Anglais !")
-                 .addField("s.tradenes", "Taduction Anglais ==> Espagnol !")            
+                 .addField(PREFIX + "tradenfr", "Traduction Anglais ==> Français !") 
+                 .addField(PREFIX + "tradfren", "Traduction Français ==> Anglais !")
+                 .addField(PREFIX + "tradesfr", "Traduction Espagnol ==> Français !")
+                 .addField(PREFIX + "tradfres", "Taduction Français ==> Espagnol !")
+                 .addField(PREFIX + "tradesen", "Traduction Espagnol ==> Anglais !")
+                 .addField(PREFIX + "tradenes", "Taduction Anglais ==> Espagnol !")            
                 .setColor("#00ffcc")
                 .setFooter("Amuse toi a traduire petit enfant !")
                 .setAuthor("Pannel des Traduction")
