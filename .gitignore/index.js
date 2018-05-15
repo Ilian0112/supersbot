@@ -100,7 +100,7 @@ bot.on("message", async function(message) {
             };
             
             var server = servers[message.guild.id];
-      
+                  message.channel.sendMessage("[```SupersBOT Musique```] - **Musique jouer ** :``EN DEV``");
             server.queue.push(args[1]);
             
             if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
@@ -115,6 +115,7 @@ bot.on("message", async function(message) {
              return;
             }
             var server = servers[message.guild.id];
+            message.channel.sendMessage("[```SupersBOT Musique```] - **Fin de la session**");
             if(server.dispatcher) server.dispatcher.end();
           console.log("Oh plus de musique " + message.author.username + " !")
         break;    
