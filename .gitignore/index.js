@@ -252,14 +252,14 @@ bot.on("message", async function(message) {
         
         case "help":
             var embed = new Discord.RichEmbed()
-                 .addField("s.ping", "Grâce à cette commande, tu pourras savoir mon ping !") 
-                 .addField("s.reseau", "Vous donne mes réseaux sociaux !")
-                 .addField("s.play", "Jouer une musique !  Pour l'utiliser, faites .play (lien) !")
-                 .addField("s.skip", "Sauter une musique  Pour l'utiliser, faites .skip !")
-                 .addField("s.stop", "Arreter la musique  Pour l'utiliser, faites .stop !")
-                 .addField("s.traductionhelp", "Pour affichier l'aide des traductions !")
-                 .addField("s.google", "Commande pas trop utile mais tu peut faire des recherche google. Pour l'utiliser, faites .google (recherche) !")
-                 .addField("s.shelp", "❌Afficher les commandes du staff. Mais seule ceux qui ont la perm de kick pourrons y accèder. ❌")
+                 .addField(PREFIX + "botinfo", "Grâce à cette commande, tu pourras savoir mes info !") 
+                 .addField(PREFIX + "reseau", "Vous donne mes réseaux sociaux !")
+                 .addField(PREFIX + "play", "Jouer une musique !  Pour l'utiliser, faites s.play (lien) !")
+                 .addField(PREFIX + "skip", "Sauter une musique  Pour l'utiliser, faite s.skip !")
+                 .addField(PREFIX + "stop", "Arreter la musique  Pour l'utiliser, faites s.stop !")
+                 .addField(PREFIX + "traductionhelp", "Pour affichier l'aide des traductions !")
+                 .addField(PREFIX + "google", "Commande pas trop utile mais tu peut faire des recherche google. Pour l'utiliser, faites s.google (recherche) !")
+                 .addField(PREFIX + "shelp", "❌Afficher les commandes du staff. Mais seule ceux qui ont la perm de kick pourrons y accèder. ❌")
                 .setColor("#0000ff")
                 .setFooter("Idée de commande ? Proposer en MP!")
                 .setAuthor("Pannel d'aide")
@@ -379,7 +379,7 @@ bot.on("message", async function(message) {
             }).then(messages => message.channel.bulkDelete(messagecount));
                         message.delete()
             var embed = new Discord.RichEmbed()
-            .addField("Commande :", "PURGE")
+            .addField("Commande :", "Purge")
             .addField("Modérateur :", message.author.username)
             .addField("Message supprimé", messagecount)
             .addField("Heure:", message.channel.createdAt)
@@ -404,20 +404,7 @@ bot.on("message", async function(message) {
                 message.channel.sendEmbed(embed)
     console.log("Mes reseau " + message.author.username + " !")
        break;
-
-       case "ping":
-            var ping_embed = new Discord.RichEmbed()
-                .addField(':clock2: Calcul en cours...', "Merci de patienter quelques instants !")
-            let startTime = Date.now();
-            message.channel.send(ping_embed).then(message => message.edit(pong_embed));
-            const fs = require("fs");
-            var pong_embed = new Discord.RichEmbed()
-                .setColor('#FFFFFF')
-                .setTitle(':ping_pong: Pong !')
-                .addField(":clock2: Temps :", `${Date.now() - startTime} millisecondes`, true)
-                .addField(":heartpulse: API Discord :", `${bot.ping} millisecondes`, true)
-        break; 
-    
+      
        case "google":
         let glg = message.content.split(' ');
         glg.shift();
@@ -512,6 +499,24 @@ bot.on("message", async function(message) {
    message.delete();
    member.guild.channels.find("name", "annonce").sendEmbed(embed);
    break;
+
+     case "botinfo":
+                      var ping_embed = new Discord.RichEmbed()
+                .addField(':clock2: Calcul en cours...', "Merci de patienter quelques instants !")
+            let startTime = Date.now();
+            msg.channel.send(ping_embed).then(msg => msg.edit(pong_embed));
+            const fs = require("fs");
+            var pong_embed = new Discord.RichEmbed()
+                .setColor('#04B404')
+                .setTitle('Mes informations :')
+		.addField("Serveurs :", "Je suis sur " + bot.guilds.array().length + " serveurs")
+                .addField("Membres :", "Je voit ``" + bot.users.size + " membres`` au total.")
+	    	.addField('Mon Ping :', ':ping_pong: Pong !')
+                .addField(":clock2: Temps :", `${Date.now() - startTime} millisecondes`, true)
+                .addField(":heartpulse: API Discord :", `${bot.ping} millisecondes`, true)
+                .setTimestamp()
+.setFooter("By Ilian^^ !")
+      break;
       
         default:
             message.channel.sendMessage("Commande invalide ^^ Fait .help pour voir toutes les commandes disponibles !")
