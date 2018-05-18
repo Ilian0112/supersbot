@@ -174,7 +174,7 @@ bot.on("message", async function(message) {
       
         var embed = new Discord.RichEmbed()
         .addField("Utilisateur :", user.username)
-        .setColor("#3333cc")
+        .setColor("#F7FE2E")
         .setAuthor(message.author.username, message.author.avatarURL)
 	.setDescription("Est désormais Winner")
         .setTimestamp()
@@ -189,9 +189,9 @@ bot.on("message", async function(message) {
       
         var embed = new Discord.RichEmbed()
         .addField("Utilisateur :", user.username)
-        .setColor("#3333cc")
+        .setColor("#F7FE2E")
         .setAuthor(message.author.username, message.author.avatarURL)
-	.setDescription("Est désormais VIP")
+	.setTitle(user.username + " **n'est plus VIP**" )
         .setTimestamp()
         member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
         break;			    
