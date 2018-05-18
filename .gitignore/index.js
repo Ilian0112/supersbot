@@ -80,6 +80,10 @@ bot.on("message", async function(message) {
     
     var roleJoueur = member.guild.roles.find("name", "Abonné ?")
     
+    var roleWinner = member.guild.roles.find("name", "🏆Winner🏆")
+    
+    var roleVIP = member.guild.roles.find("name", "⭐️VIP⭐️")
+    
     var roleMute = member.guild.roles.find("name", "Mute")
     
     var modlog = member.guild.channels.find("name", "🤖bot-logs🤖")
@@ -146,7 +150,68 @@ bot.on("message", async function(message) {
         .setTimestamp()
         member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
         break;
-       
+      
+        case "rwinner":
+        if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
+        var member = message.mentions.members.first();
+        member.removeRole(roleWinner)
+        message.channel.sendMessage(user.toString() + " n'est plus Winner ✅") 
+      
+        var embed = new Discord.RichEmbed()
+        .addField("Utilisateur :", user.username)
+        .setColor("#3333cc")
+        .setAuthor(message.author.username, message.author.avatarURL)
+	.setDescription("N'est plus Winner")
+        .setTimestamp()
+        member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
+        break;		    
+	
+        case "winner":
+        if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
+        var member = message.mentions.members.first();
+        member.addRole(roleWinner)
+        message.channel.sendMessage(user.toString() + " est Winner ✅") 
+      
+        var embed = new Discord.RichEmbed()
+        .addField("Utilisateur :", user.username)
+        .setColor("#3333cc")
+        .setAuthor(message.author.username, message.author.avatarURL)
+	.setDescription("Est désormais Winner")
+        .setTimestamp()
+        member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
+        break;			    
+	
+	    case "vip":
+        if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
+        var member = message.mentions.members.first();
+        member.addRole(roleVIP)
+        message.channel.sendMessage(user.toString() + " est VIP ✅") 
+      
+        var embed = new Discord.RichEmbed()
+        .addField("Utilisateur :", user.username)
+        .setColor("#3333cc")
+        .setAuthor(message.author.username, message.author.avatarURL)
+	.setDescription("Est désormais VIP")
+        .setTimestamp()
+        member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
+        break;			    
+	    
+	    case "rvip":
+        if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
+        var member = message.mentions.members.first();
+        member.removeRole(roleVIP)
+        message.channel.sendMessage(user.toString() + " n'est plus VIP ✅") 
+      
+        var embed = new Discord.RichEmbed()
+        .addField("Utilisateur :", user.username)
+        .setColor("#3333cc")
+        .setAuthor(message.author.username, message.author.avatarURL)
+	.setDescription("N'est plus VIP")
+        .setTimestamp()
+        member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
+        break;	
+		    
+		    
     case "removeabo?":
     member.removeRole(roleJoueur)
 	        var embed = new Discord.RichEmbed()
