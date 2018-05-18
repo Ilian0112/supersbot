@@ -149,16 +149,68 @@ bot.on("message", async function(message) {
        
     case "removeabo?":
     member.removeRole(roleJoueur)
-    message.reply("à bien enlever son role Abonné ? ✅")
+	        var embed = new Discord.RichEmbed()
+        .addField("Utilisateur :", message.author.toString())
+        .addField("Rôle :", "Abonné ?")
+        .setColor("#FFFF00")
+        .setAuthor(message.author.username, message.author.avatarURL)
+	.setDescription("Rôle Enlever")
+        .setTimestamp()
+        member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);		    
+    message.reply("à bien enlever son role Abonné ?✅")
     break;
 
+    case "removeabo":
+    member.removeRole(roleAbo)
+	        var embed = new Discord.RichEmbed()
+        .addField("Utilisateur :", message.author.toString())
+        .addField("Rôle :", "Abonné")
+        .setColor("#FFFF00")
+        .setAuthor(message.author.username, message.author.avatarURL)
+	.setDescription("Rôle Enlever")
+        .setTimestamp()
+        member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);		    
+    message.reply("à bien enlever son role Abonné ✅")
+    break;
+		    
+    case "removenabo":
+    member.removeRole(roleNAbo)
+	        var embed = new Discord.RichEmbed()
+        .addField("Utilisateur :", message.author.toString())
+        .addField("Rôle :", "Non Abonné")
+        .setColor("#FFFF00")
+        .setAuthor(message.author.username, message.author.avatarURL)
+	.setDescription("Rôle Enlever")
+        .setTimestamp()
+        member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);		    	    
+    message.reply("à bien enlever son role Non Abonné ✅")
+    break;		    		    
 	    case "addabo":
     member.addRole(roleAbo)
+    member.removeRole(roleJoueur)	
+	var embed = new Discord.RichEmbed()
+        .addField("Utilisateur :", message.author.toString())
+        .addField("Rôle :", "Abonné")
+        .setColor("#FFFF00")
+        .setAuthor(message.author.username, message.author.avatarURL)
+	.setDescription("Rôle Prit")
+        .setTimestamp()
+        member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);		    
+    message.reply("à bien prit son role Non Abonné ✅")
     message.reply("à bien prit son role Abonné ✅")
     break;		    
-	
+		    
     case "addnonabo":
     member.addRole(roleNAbo)
+    member.removeRole(roleJoueur)
+        var embed = new Discord.RichEmbed()
+        .addField("Utilisateur :", message.author.toString())
+        .addField("Rôle :", "Non Abonné")
+        .setColor("#FFFF00")
+        .setAuthor(message.author.username, message.author.avatarURL)
+	.setDescription("Rôle Prit")
+        .setTimestamp()
+        member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);		    
     message.reply("à bien prit son role Non Abonné ✅")
     break;		    
 	
@@ -167,6 +219,8 @@ bot.on("message", async function(message) {
                  .addField(PREFIX + "addabo", "Grâce à cette commande, tu pourras prendre le rôle Abonné !") 
                  .addField(PREFIX + "addnonabo", "Grâce à cette commande, tu pourras prendre le rôle Non Abonné !")
                  .addField(PREFIX + "removeabo", "Grâce à cette commande, tu pourras enlever le rôle Abonné ? !")
+                 .addField(PREFIX + "removeabo", "Grâce à cette commande, tu pourras enlever le rôle Abonné !")
+                 .addField(PREFIX + "removenabo", "Grâce à cette commande, tu pourras enlever le rôle Non Abonné ? !")
                 .setColor("#0000ff")
                 .setFooter("By Ilian!")
                 .setAuthor("Panel des rôle")
