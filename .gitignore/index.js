@@ -74,9 +74,11 @@ bot.on("message", async function(message) {
 
     var rolekick = member.guild.roles.find("name", "Kick")
 
-    var roleAbo = member.guild.roles.find("name", "Abonné ?")
+    var roleAbo = member.guild.roles.find("name", "Abonné")
 
-    var roleJoueur= member.guild.roles.find("name", "Abonné ?")
+    var roleNAbo = member.guild.roles.find("name", "Non Abonné")
+    
+    var roleJoueur = member.guild.roles.find("name", "Abonné ?")
     
     var roleMute = member.guild.roles.find("name", "Mute")
     
@@ -146,10 +148,35 @@ bot.on("message", async function(message) {
         break;
        
     case "removeabo?":
-    member.removeRole(roleAbo)
+    member.removeRole(roleJoueur)
     message.reply("à bien enlever son role Abonné ? ✅")
     break;
 
+	    case "addabo":
+    member.addRole(roleAbo)
+    message.reply("à bien prit son role Abonné ✅")
+    break;		    
+	
+    case "addnonabo":
+    member.addRole(roleNAbo)
+    message.reply("à bien prit son role Non Abonné ✅")
+    break;		    
+	
+        case "role":
+            var embed = new Discord.RichEmbed()
+                 .addField(PREFIX + "addabo", "Grâce à cette commande, tu pourras prendre le rôle Abonné !") 
+                 .addField(PREFIX + "addnonabo", "Grâce à cette commande, tu pourras prendre le rôle Non Abonné !")
+                 .addField(PREFIX + "removeabo", "Grâce à cette commande, tu pourras enlever le rôle Abonné ? !")
+                .setColor("#0000ff")
+                .setFooter("By Ilian!")
+                .setAuthor("Panel des rôle")
+                .setDescription(PREFIX + "cmd")
+                .setTimestamp()
+                message.delete()
+                message.channel.sendEmbed(embed)
+             console.log("Ta eu besoin d'aide toi " + message.author.username + " !")
+            break;		    
+		    
       case "mute":
         if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu n'as pas la permission d'exécuter la commande. :x:");
         if(!modlog) return message.reply("Je ne trouve pas de channel log.");  
