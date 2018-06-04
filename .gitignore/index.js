@@ -571,7 +571,7 @@ bot.on("message", async function(message) {
    .setColor("#FF0000")
    .setFooter("By Ilian ! ^^")
    message.delete();
-   message.channel.send("@everyone Nouvelle annonce")
+   message.guild.channels.find('name', "annonce").send("@everyone Nouvelle annonce")
    member.guild.channels.find("name", "annonce").sendEmbed(embed);
    break;
       
