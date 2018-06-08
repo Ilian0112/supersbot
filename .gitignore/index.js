@@ -323,8 +323,24 @@ bot.on("message", async function(message) {
         member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);		    
     message.reply("à bien prit son role Non Abonné ✅")
     break;		    
-	
-        case "role":
+
+     case "notif":
+            var nt_embed = new Discord.RichEmbed()
+                 .addField("DEV", "LA COMMANDES EST ENCORE EN DEVELOPPEMENT") 
+                 .addField(PREFIX + "addnotifan", "Grâce à cette commande, tu pourras prendre le rôle Notif Animation !")
+                 .addField(PREFIX + "addnotifa", "Grâce à cette commande, tu pourras enlever le rôle Notif Annonce !")
+                 .addField(PREFIX + "addnotifg", "Grâce à cette commande, tu pourras enlever le rôle Notif Giveaway !")    
+                .setColor("#0000ff")
+                .setFooter("By Ilian!")
+                .setAuthor("Panel des rôle")
+                .setDescription(PREFIX + "cmd")
+                .setTimestamp()
+                message.delete()
+                message.channel.sendEmbed(nt_embed)
+             console.log("Ta eu besoin d'aide toi " + message.author.username + " !")
+      break;				    
+		    
+     case "role":
             var embed = new Discord.RichEmbed()
                  .addField(PREFIX + "addabo", "Grâce à cette commande, tu pourras prendre le rôle Abonné !") 
                  .addField(PREFIX + "addnonabo", "Grâce à cette commande, tu pourras prendre le rôle Non Abonné !")
@@ -340,7 +356,7 @@ bot.on("message", async function(message) {
                 message.delete()
                 message.channel.sendEmbed(embed)
              console.log("Ta eu besoin d'aide toi " + message.author.username + " !")
-            break;		    
+      break;		    
 		    
       case "mute":
         if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu n'as pas la permission d'exécuter la commande. :x:");
