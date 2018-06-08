@@ -84,6 +84,8 @@ bot.on("message", async function(message) {
     
     var roleVIP = member.guild.roles.find("name", "⭐️VIP⭐️")
     
+    var roleNotifA = member.guild.roles.find("name", "🔔Notification Annonce")
+    
     var roleMute = member.guild.roles.find("name", "Mute")
     
     var modlog = member.guild.channels.find("name", "🤖bot-logs🤖")
@@ -166,6 +168,10 @@ bot.on("message", async function(message) {
         member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
         break;		    
 	
+	    case "addnotifa":
+       message.reply("EN DEV")
+		    break;
+		    
         case "winner":
         if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
         var member = message.mentions.members.first();
