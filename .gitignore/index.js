@@ -86,6 +86,10 @@ bot.on("message", async function(message) {
     
     var roleNotifA = member.guild.roles.find("name", "🔔Notification Annonce")
     
+    var roleNotifG = member.guild.roles.find("name", "🔔Notification Giveaway")    
+    
+    var roleNotifAN = member.guild.roles.find("name", "🔔Notification Animation")       
+    
     var roleMute = member.guild.roles.find("name", "Mute")
     
     var modlog = member.guild.channels.find("name", "🤖bot-logs🤖")
@@ -268,7 +272,7 @@ bot.on("message", async function(message) {
     break;		    
 	
     case "addnotifa":
-    member.addrole(roleNotifA)
+    member.addRole(roleNotifA)
 	var notifa_embed = new Discord.RichEmbed()
 		.addField("Utilisateur :", message.author.toString())
 		.addField("Rôle :", "🔔Notification Annonce")
@@ -278,6 +282,32 @@ bot.on("message", async function(message) {
         .setTimestamp()
         member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(notifa_embed);		    
     message.reply("à bien prit son role 🔔Notification Annonce ✅")		    
+    break;		    
+		
+    case "addnotifg":
+    member.addRole(roleNotifG)
+	var notifg_embed = new Discord.RichEmbed()
+		.addField("Utilisateur :", message.author.toString())
+		.addField("Rôle :", "🔔Notification Giveaway")
+        .setColor("#FFFF00")
+        .setAuthor(message.author.username, message.author.avatarURL)
+	.setDescription("Rôle Prit")
+        .setTimestamp()
+        member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(notifg_embed);		    
+    message.reply("à bien prit son role 🔔Notification Giveaway ✅")		    
+    break;			    
+
+    case "addnotifan":
+    member.addRole(roleNotifAN)
+	var notifan_embed = new Discord.RichEmbed()
+		.addField("Utilisateur :", message.author.toString())
+		.addField("Rôle :", "🔔Notification Animation")
+        .setColor("#FFFF00")
+        .setAuthor(message.author.username, message.author.avatarURL)
+	.setDescription("Rôle Prit")
+        .setTimestamp()
+        member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(notifan_embed);		    
+    message.reply("à bien prit son role 🔔Notification Animation ✅")		    
     break;		    
 		    
     case "addnonabo":
@@ -301,6 +331,7 @@ bot.on("message", async function(message) {
                  .addField(PREFIX + "removeabo", "Grâce à cette commande, tu pourras enlever le rôle Abonné ? !")
                  .addField(PREFIX + "removeabo", "Grâce à cette commande, tu pourras enlever le rôle Abonné !")
                  .addField(PREFIX + "removenabo", "Grâce à cette commande, tu pourras enlever le rôle Non Abonné ? !")
+                 .addField(PREFIX + "notif", "Grâce à cette commande, tu pourras voir les rôles notifs ? !")	    
                 .setColor("#0000ff")
                 .setFooter("By Ilian!")
                 .setAuthor("Panel des rôle")
