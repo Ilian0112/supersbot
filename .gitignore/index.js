@@ -31,7 +31,7 @@ bot.on("ready", function () {
 
 bot.on('message', function(message) {
     
-       if(message.content === 'Ta mère la grosse pute') { // # cencure
+       if(message.content === 'ntm') { // # cencure
             message.reply('Surveille ton language jeune insolents !')
             message.delete()
            console.log("C'est quoi ce language " + message.author.username + " !")
@@ -167,10 +167,6 @@ bot.on("message", async function(message) {
         .setTimestamp()
         member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
         break;		    
-	
-	    case "addnotifa":
-       message.reply("EN DEV")
-		    break;
 		    
         case "winner":
         if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
@@ -187,14 +183,14 @@ bot.on("message", async function(message) {
         member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
         break;			    
 	
-	    case "vip":
+	case "vip":
         if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
         var member = message.mentions.members.first();
         member.addRole(roleVIP)
         message.channel.sendMessage(user.toString() + " est VIP ✅") 
       
         var embed = new Discord.RichEmbed()
-        .addField("Utilisateur :", user.username)
+		.addField("Utilisateur :", user.username)
         .setColor("#F7FE2E")
         .setAuthor(message.author.username, message.author.avatarURL)
 	.setTitle(user.username + " **n'est plus VIP**" )
@@ -202,14 +198,14 @@ bot.on("message", async function(message) {
         member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);
         break;			    
 	    
-	    case "rvip":
+	case "rvip":
         if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.sendMessage("Tu ne peux exécuter cette commande. ❌");
         var member = message.mentions.members.first();
         member.removeRole(roleVIP)
         message.channel.sendMessage(user.toString() + " n'est plus VIP ✅") 
       
         var embed = new Discord.RichEmbed()
-        .addField("Utilisateur :", user.username)
+		.addField("Utilisateur :", user.username)
         .setColor("#3333cc")
         .setAuthor(message.author.username, message.author.avatarURL)
 	.setDescription("N'est plus VIP")
@@ -256,19 +252,32 @@ bot.on("message", async function(message) {
         member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);		    	    
     message.reply("à bien enlever son role Non Abonné ✅")
     break;		    		    
-	    case "addabo":
+    
+    case "addabo":
     member.addRole(roleAbo)
     member.removeRole(roleJoueur)	
 	var embed = new Discord.RichEmbed()
-        .addField("Utilisateur :", message.author.toString())
-        .addField("Rôle :", "Abonné")
+		.addField("Utilisateur :", message.author.toString())
+		.addField("Rôle :", "Abonné")
         .setColor("#FFFF00")
         .setAuthor(message.author.username, message.author.avatarURL)
 	.setDescription("Rôle Prit")
         .setTimestamp()
         member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(embed);		    
-    message.reply("à bien prit son role Non Abonné ✅")
     message.reply("à bien prit son role Abonné ✅")
+    break;		    
+	
+    case "addnotifa":
+    member.addrole(roleNotifA)
+	var notifa_embed = new Discord.RichEmbed()
+		.addField("Utilisateur :", message.author.toString())
+		.addField("Rôle :", "🔔Notification Annonce")
+        .setColor("#FFFF00")
+        .setAuthor(message.author.username, message.author.avatarURL)
+	.setDescription("Rôle Prit")
+        .setTimestamp()
+        member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(notifa_embed);		    
+    message.reply("à bien prit son role 🔔Notification Annonce ✅")		    
     break;		    
 		    
     case "addnonabo":
