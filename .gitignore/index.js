@@ -309,6 +309,45 @@ bot.on("message", async function(message) {
         member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(notifan_embed);		    
     message.reply("à bien prit son role 🔔Notification Animation ✅")		    
     break;		    
+
+    case "addnotifa":
+    member.removeRole(roleNotifA)
+	var notifa_embed = new Discord.RichEmbed()
+		.addField("Utilisateur :", message.author.toString())
+		.addField("Rôle :", "🔔Notification Annonce")
+        .setColor("#FFFF00")
+        .setAuthor(message.author.username, message.author.avatarURL)
+	.setDescription("Rôle Enlever")
+        .setTimestamp()
+        member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(notifa_embed);		    
+    message.reply("à bien enlever son role 🔔Notification Annonce ✅")		    
+    break;		    
+		
+    case "rnotifg":
+    member.removeRole(roleNotifG)
+	var notifg_embed = new Discord.RichEmbed()
+		.addField("Utilisateur :", message.author.toString())
+		.addField("Rôle :", "🔔Notification Giveaway")
+        .setColor("#FFFF00")
+        .setAuthor(message.author.username, message.author.avatarURL)
+	.setDescription("Rôle Enlever")
+        .setTimestamp()
+        member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(notifg_embed);		    
+    message.reply("à bien enlever son role 🔔Notification Giveaway ✅")		    
+    break;			    
+
+    case "rnotifan":
+    member.removeRole(roleNotifAN)
+	var notifan_embed = new Discord.RichEmbed()
+		.addField("Utilisateur :", message.author.toString())
+		.addField("Rôle :", "🔔Notification Animation")
+        .setColor("#FFFF00")
+        .setAuthor(message.author.username, message.author.avatarURL)
+	.setDescription("Rôle Enlever")
+        .setTimestamp()
+        member.guild.channels.find("name", "🤖bot-logs🤖").sendEmbed(notifan_embed);		    
+    message.reply("à bien enlever son role 🔔Notification Animation ✅")		    
+    break;			    
 		    
     case "addnonabo":
     member.addRole(roleNAbo)
