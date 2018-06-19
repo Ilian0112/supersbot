@@ -359,7 +359,7 @@ bot.on("message", async function(message) {
             message.reply("à bien enlever son role 🔔Notification Animation ✅")		    
         break;			    
  
-        case "rolelist":
+        case "roles":
             message.delete()
             var helprole1_embed = new Discord.RichEmbed()
                 .setTitle("Menu d'aide rôle")
