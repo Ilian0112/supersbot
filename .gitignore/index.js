@@ -6,6 +6,8 @@ const EVERYONE = "@";
 
 var client = new Discord.Client();
 
+var version = "V.1.5.6"
+
 var bot = new Discord.Client();
 
 var emoji_instaID = "457965848301404162"
@@ -104,6 +106,8 @@ bot.on("message", async function(message) {
     var roleMute = member.guild.roles.find("name", "Mute")
     
     var modlog = member.guild.channels.find("name", "🤖bot-logs🤖")
+
+    var foother = "Demande de @" + message.author.username + "#" + message.author.discriminator + " ! | SupersBOT - " + version
     
     var user = message.mentions.users.first();
 
@@ -142,11 +146,6 @@ bot.on("message", async function(message) {
             if(server.dispatcher) server.dispatcher.end();
             console.log("Oh plus de musique " + message.author.username + " !")
         break;    
-      
-        case "membres":
-            message.reply("Nous sommes``" + message.guild.memberCount + " membres`` sur le discord !");
-            console.log("Tu sais qu'on combien on est maintenant " + message.author.username + " !( " + message.guild.memberCount + " )")
-        break;
         
         case "unmute":
             if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("Tu ne peux exécuter cette commande. ❌");
@@ -165,6 +164,7 @@ bot.on("message", async function(message) {
                 .setColor("#3333cc")
                 .setAuthor(message.author.username, message.author.avatarURL)
                 .setTimestamp()
+                .setFooter("SupersBOT - " + version)
             member.guild.channels.find("name", "🤖bot-logs🤖").send(unmute_embed);
         break;
 
@@ -177,12 +177,10 @@ bot.on("message", async function(message) {
             message.channel.send(user.toString() + " est VIP ✅") 
             
             var winner_add_embed = new Discord.RichEmbed()
-                    .addField("Utilisateur :", message.author.toString())
-                    .addField("Rôle :", "Winner")
-                .setColor("#FFFF00")
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setDescription("Rôle Prit")
-                .setTimestamp()
+                .setAuthor(message.author.username + "#" + message.author.discriminator, message.author.avatarURL)
+                .setDescription(message.author.toString() + " **a eu le rôle " + roleWinner + "** !")
+                .setColor("#FF0000")
+                .setFooter("UserID : " + message.author.id)
             member.guild.channels.find("name", "🤖bot-logs🤖").send(winner_add_embed);
         }
             message.delete()
@@ -194,13 +192,11 @@ bot.on("message", async function(message) {
                 member.removeRole(roleWinner)
             message.channel.send(user.toString() + " est VIP ✅") 
             
-            var rm_vip_embed = new Discord.RichEmbed()
-                    .addField("Utilisateur :", message.author.toString())
-                    .addField("Rôle :", "Winner")
-                .setColor("#FFFF00")
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setDescription("Rôle Enlever")
-                .setTimestamp()
+            var winner_add_embed = new Discord.RichEmbed()
+                .setAuthor(message.author.username + "#" + message.author.discriminator, message.author.avatarURL)
+                .setDescription(message.author.toString() + " **n'a plus le rôle " + roleWinner + "** !")
+                .setColor("#FF0000")
+                .setFooter("UserID : " + message.author.id)
             member.guild.channels.find("name", "🤖bot-logs🤖").send(rm_vip_embed);
         }
             message.delete()
@@ -215,12 +211,10 @@ bot.on("message", async function(message) {
             message.channel.send(user.toString() + " est VIP ✅") 
             
             var vip_add_embed = new Discord.RichEmbed()
-                    .addField("Utilisateur :", message.author.toString())
-                    .addField("Rôle :", "VIP")
-                .setColor("#FFFF00")
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setDescription("Rôle Prit")
-                .setTimestamp()
+                .setAuthor(message.author.username + "#" + message.author.discriminator, message.author.avatarURL)
+                .setDescription(message.author.toString() + " **a eu le rôle " + roleVIP + "** !")
+                .setColor("#FF0000")
+                .setFooter("UserID : " + message.author.id)
             member.guild.channels.find("name", "🤖bot-logs🤖").send(vip_add_embed);
         }
             message.delete()
@@ -233,12 +227,10 @@ bot.on("message", async function(message) {
             message.channel.send(user.toString() + " est VIP ✅") 
             
             var rm_vip_embed = new Discord.RichEmbed()
-                    .addField("Utilisateur :", message.author.toString())
-                    .addField("Rôle :", "VIP")
-                .setColor("#FFFF00")
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setDescription("Rôle Enlever")
-                .setTimestamp()
+                .setAuthor(message.author.username + "#" + message.author.discriminator, message.author.avatarURL)
+                .setDescription(message.author.toString() + " **n'a plus le rôle " + roleVIP + "** !")
+                .setColor("#FF0000")
+                .setFooter("UserID : " + message.author.id)
             member.guild.channels.find("name", "🤖bot-logs🤖").send(rm_vip_embed);
         }
             message.delete()
@@ -249,12 +241,10 @@ bot.on("message", async function(message) {
                 member.addRole(roleAbonné)
                 member.removeRole(roleAbonnéQuest)	
             var abo_add_embed = new Discord.RichEmbed()
-                    .addField("Utilisateur :", message.author.toString())
-                    .addField("Rôle :", "Abonné")
-                .setColor("#FFFF00")
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setDescription("Rôle Prit")
-                .setTimestamp()
+                .setAuthor(message.author.username + "#" + message.author.discriminator, message.author.avatarURL)
+                .setDescription(message.author.toString() + " **a eu le rôle " + roleAbonné + "** !")
+                .setColor("#FF0000")
+                .setFooter("UserID : " + message.author.id)
             member.guild.channels.find("name", "🤖bot-logs🤖").send(abo_add_embed);		    
             message.reply("à bien prit son role Abonné ✅")
         break;	
@@ -263,12 +253,10 @@ bot.on("message", async function(message) {
                 member.removeRole(roleAbonné)
                 member.addRole(roleAbonnéQuest)
             var rm_abo_embed = new Discord.RichEmbed()
-                    .addField("Utilisateur :", message.author.toString())
-                    .addField("Rôle :", "Abonné")
-                .setColor("#FFFF00")
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setDescription("Rôle Enlever")
-                .setTimestamp()
+                .setAuthor(message.author.username + "#" + message.author.discriminator, message.author.avatarURL)
+                .setDescription(message.author.toString() + " **n'a plus le rôle " + roleAbonné + "** !")
+                .setColor("#FF0000")
+                .setFooter("UserID : " + message.author.id)
             member.guild.channels.find("name", "🤖bot-logs🤖").send(rm_abo_embed);		    
             message.reply("à bien enlever son role Abonné ✅")
         break;
@@ -279,12 +267,10 @@ bot.on("message", async function(message) {
                 member.addRole(roleNonAbonné)
                 member.removeRole(roleAbonnéQuest)
             var nabo_add_embed = new Discord.RichEmbed()
-                    .addField("Utilisateur :", message.author.toString())
-                    .addField("Rôle :", "Non Abonné")
-                .setColor("#FFFF00")
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setDescription("Rôle Prit")
-                .setTimestamp()
+                .setAuthor(message.author.username + "#" + message.author.discriminator, message.author.avatarURL)
+                .setDescription(message.author.toString() + " **a eu le rôle " + roleNonAbonné + "** !")
+                .setColor("#FF0000")
+                .setFooter("UserID : " + message.author.id)
             member.guild.channels.find("name", "🤖bot-logs🤖").send(nabo_add_embed);		    
             message.reply("à bien prit son role Non Abonné ✅")
         break;
@@ -293,12 +279,10 @@ bot.on("message", async function(message) {
                 member.removeRole(roleNonAbonné)
                 member.addRole(roleAbonnéQuest)
             var rm_nabo_embed = new Discord.RichEmbed()
-                    .addField("Utilisateur :", message.author.toString())
-                    .addField("Rôle :", "Non Abonné")
-                .setColor("#FFFF00")
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setDescription("Rôle Enlever")
-                .setTimestamp()
+                .setAuthor(message.author.username + "#" + message.author.discriminator, message.author.avatarURL)
+                .setDescription(message.author.toString() + " **n'a plus le rôle " + roleNonAbonné + "** !")
+                .setColor("#FF0000")
+                .setFooter("UserID : " + message.author.id)
             member.guild.channels.find("name", "🤖bot-logs🤖").send(rm_nabo_embed);		    	    
             message.reply("à bien enlever son role Non Abonné ✅")
         break;		 
@@ -308,27 +292,23 @@ bot.on("message", async function(message) {
         case "addnotifannonce":
                 member.addRole(roleNotifAnnonce)
             var notifannonce_add_embed = new Discord.RichEmbed()
-                    .addField("Utilisateur :", message.author.toString())
-                    .addField("Rôle :", "🔔Notification Annonce")
-                .setColor("#FFFF00")
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setDescription("Rôle Enlever")
-                .setTimestamp()
+                .setAuthor(message.author.username + "#" + message.author.discriminator, message.author.avatarURL)
+                .setDescription(message.author.toString() + " **a eu le rôle " + roleNotifAnnonce + "** !")
+                .setColor("#FF0000")
+                .setFooter("UserID : " + message.author.id)
             member.guild.channels.find("name", "🤖bot-logs🤖").send(notifannonce_add_embed);		    
             message.reply("à bien enlever son role 🔔Notification Annonce ✅")		    
         break;		 
 
         case "removenotifannonce":
-        member.removeRole(roleNotifAnnonce)
-        var rm_notifannonce_embed = new Discord.RichEmbed()
-        .addField("Utilisateur :", message.author.toString())
-        .addField("Rôle :", "🔔Notification Annonce")
-        .setColor("#FFFF00")
-        .setAuthor(message.author.username, message.author.avatarURL)
-        .setDescription("Rôle Enlever")
-        .setTimestamp()
-        member.guild.channels.find("name", "🤖bot-logs🤖").send(rm_notifannonce_embed);		    	    
-        message.reply("à bien enlever son role 🔔Notification Annonce ✅")   
+                member.removeRole(roleNotifAnnonce)
+            var rm_notifannonce_embed = new Discord.RichEmbed()
+                .setAuthor(message.author.username + "#" + message.author.discriminator, message.author.avatarURL)
+                .setDescription(message.author.toString() + " **n'a plus le rôle " + roleNotifAnnonce + "** !")
+                .setColor("#FF0000")
+                .setFooter("UserID : " + message.author.id)
+            member.guild.channels.find("name", "🤖bot-logs🤖").send(rm_notifannonce_embed);		    	    
+            message.reply("à bien enlever son role 🔔Notification Annonce ✅")   
         break;	
 
 // Role 🔔Notification Giveaway
@@ -336,12 +316,10 @@ bot.on("message", async function(message) {
         case "addnotifgiveaway":
                 member.addRole(roleNotifGiveaway)
             var notifgiveaway_add_embed = new Discord.RichEmbed()
-                    .addField("Utilisateur :", message.author.toString())
-                    .addField("Rôle :", "🔔Notification Giveaway")
-                .setColor("#FFFF00")
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setDescription("Rôle Prit")
-                .setTimestamp()
+                .setAuthor(message.author.username + "#" + message.author.discriminator, message.author.avatarURL)
+                .setDescription(message.author.toString() + " **a eu le rôle " + roleNotifGiveaway + "** !")
+                .setColor("#FF0000")
+                .setFooter("UserID : " + message.author.id)
             member.guild.channels.find("name", "🤖bot-logs🤖").send(notifgiveaway_add_embed);		    
             message.reply("à bien prit son role 🔔Notification Giveaway ✅")		    
         break;		
@@ -349,12 +327,10 @@ bot.on("message", async function(message) {
         case "removenotifgiveaway":
                 member.removeRole(roleNotifGiveaway)
             var rm_notifgiveaway_embed = new Discord.RichEmbed()
-                    .addField("Utilisateur :", message.author.toString())
-                    .addField("Rôle :", "🔔Notification Giveaway")
-                .setColor("#FFFF00")
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setDescription("Rôle Enlever")
-                .setTimestamp()
+                .setAuthor(message.author.username + "#" + message.author.discriminator, message.author.avatarURL)
+                .setDescription(message.author.toString() + " **n'a plus le rôle " + roleNotifGiveaway + "** !")
+                .setColor("#FF0000")
+                .setFooter("UserID : " + message.author.id)
             member.guild.channels.find("name", "🤖bot-logs🤖").send(rm_notifgiveaway_embed);		    	    
             message.reply("à bien enlever son role 🔔Notification Giveaway ✅")   
         break;	
@@ -364,12 +340,10 @@ bot.on("message", async function(message) {
         case "addnotifanimation":
                 member.addRole(roleNotifAnimation)
             var notifanimation_add_embed = new Discord.RichEmbed()
-                    .addField("Utilisateur :", message.author.toString())
-                    .addField("Rôle :", "🔔Notification Animation")
-                .setColor("#FFFF00")
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setDescription("Rôle Prit")
-                .setTimestamp()
+                .setAuthor(message.author.username + "#" + message.author.discriminator, message.author.avatarURL)
+                .setDescription(message.author.toString() + " **a eu le rôle " + roleNotifAnimation + "** !")
+                .setColor("#FF0000")
+                .setFooter("UserID : " + message.author.id)
             member.guild.channels.find("name", "🤖bot-logs🤖").send(notifanimation_add_embed);		    
             message.reply("à bien prit son role 🔔Notification Animation ✅")		    
         break;		    
@@ -377,24 +351,28 @@ bot.on("message", async function(message) {
         case "removenotifanimation":
                 member.removeRole(roleNotifAnimation)
             var rm_notifanimation_embed = new Discord.RichEmbed()
-                    .addField("Utilisateur :", message.author.toString())
-                    .addField("Rôle :", "🔔Notification Animation")
-                .setColor("#FFFF00")
-                .setAuthor(message.author.username, message.author.avatarURL)
-                .setDescription("Rôle Enlever")
-            .setTimestamp()
+                .setAuthor(message.author.username + "#" + message.author.discriminator, message.author.avatarURL)
+                .setDescription(message.author.toString() + " **n'a plus le rôle " + roleNotifAnimation + "** !")
+                .setColor("#FF0000")
+                .setFooter("UserID : " + message.author.id)
             member.guild.channels.find("name", "🤖bot-logs🤖").send(rm_notifanimation_embed);		    
             message.reply("à bien enlever son role 🔔Notification Animation ✅")		    
         break;			    
-        
-        case "roles":
-            var role_embed = new Discord.RichEmbed()
+ 
+        case "rolelist":
+            message.delete()
+            var helprole1_embed = new Discord.RichEmbed()
+                .setTitle("Menu d'aide rôle")
+                .setDescription("Rôles Abonnés")
+                    .setColor("#36393E")
                     .addField(PREFIX + "addabo", "Grâce à cette commande, tu pourras prendre le rôle " + roleAbonné + " !") 
                     .addField(PREFIX + "removeabo", "Grâce à cette commande, tu pourras enlever le rôle " + roleAbonné + " !")
                     .addBlankField()                
                     .addField(PREFIX + "addnonabo", "Grâce à cette commande, tu pourras prendre le rôle " + roleNonAbonné + " !")
                     .addField(PREFIX + "removenabo", "Grâce à cette commande, tu pourras enlever le rôle " + roleNonAbonné + " !")
-                    .addBlankField() 
+                .setFooter("Page 1/2 | Merci à @ZENFIX#8575 qui à bien aider pour cette commande. | " + foother)
+            var helprole2_embed = new Discord.RichEmbed()
+                .setDescription("Rôles Notifications")
                     .addField(PREFIX + "addnotifannonce", "Grâce à cette commande, tu pourras prendre le rôle " + roleNotifAnnonce + " !")
                     .addField(PREFIX + "removenotifannonce", "Grâce à cette commande, tu pourras enlever le rôle " + roleNotifAnnonce + " !")
                     .addBlankField()
@@ -402,17 +380,24 @@ bot.on("message", async function(message) {
                     .addField(PREFIX + "removenotifgiveaway", "Grâce à cette commande, tu pourras enlever le rôle " + roleNotifGiveaway + " !")
                     .addBlankField()
                     .addField(PREFIX + "addnotifanimation", "Grâce à cette commande, tu pourras prendre le rôle " + roleNotifAnimation + " !")
-                    .addField(PREFIX + "removenotifanimation", "Grâce à cette commande, tu pourras enlever le rôle " + roleNotifAnimation + " !")                  
-                .setColor("#36393E")
-                .setFooter("By Ilian!")
-                .setTitle("Panel des rôles")
-                .setDescription("Ici, tu voit tous les rôles que tu peut prendre ou enlever.")
-                .setTimestamp()
-            message.delete()
-            message.channel.send(role_embed)
-            console.log("Ta eu besoin d'aide toi " + message.author.username + " !")
-        break;		    
-		    
+                    .addField(PREFIX + "removenotifanimation", "Grâce à cette commande, tu pourras enlever le rôle " + roleNotifAnimation + " !")   
+                .setFooter("Page 2/2 | Merci à @ZENFIX#8575 qui à bien aider pour cette commande. | " + foother)
+                .setColor("#36393E")   
+            const rhelpmessage = await message.channel.send(helprole1_embed);
+            await rhelpmessage.react("1⃣");
+            await rhelpmessage.react("2⃣");
+            const panier = rhelpmessage.createReactionCollector((reaction, user) => user.id === message.author.id);
+            panier.on('collect', async(reaction) => {
+                if (reaction.emoji.name === "1⃣") {
+                    rhelpmessage.edit(helprole1_embed);
+                }
+                if (reaction.emoji.name === "2⃣") {
+                    rhelpmessage.edit(helprole2_embed)
+                }
+                    await reaction.remove(message.author.id);
+            })
+        break;        
+
         case "mute":
             if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("Tu n'as pas la permission d'exécuter la commande. :x:");
             if(!modlog) return message.reply("Je ne trouve pas de channel log.");  
@@ -431,48 +416,87 @@ bot.on("message", async function(message) {
                 .setColor("#FFFF00")
                 .setAuthor(message.author.username, message.author.avatarURL)
                 .setTimestamp()
+                .setFooter("SupersBOT - " + version)
             member.guild.channels.find("name", "🤖bot-logs🤖").send(mute_embed);
         break;
 
         case "shelp":
             if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("Tu ne peux exécuter cette commande. ❌");
-            var shelp_embed = new Discord.RichEmbed()
-                    .addField(PREFIX + "ban", "Cette commande permet de bannir un utilisateur ! Pour l'utiliser, faites " + PREFIX + "ban @(utilisateur) + (raison)")
-                    .addField(PREFIX + "kick", "Cette commande permet de kick un utilisateur ! Pour l'utiliser, faites " + PREFIX + "kick @(utilisateur) + (raison)")
-                    .addField(PREFIX + "unban", "Cette commande permet de unban un utilisateur ! Pour l'utiliser, faites " + PREFIX + "unban @(utilisateur)")
-                    .addField(PREFIX + "unkick", "Cette commande permet de unkick un utilisateur ! Pour l'utiliser, faites " + PREFIX + "unkick @(utilisateur)")
-                    .addField(PREFIX + "purge", "Cette commande permet de supprimé des messages beaucoup plus rapidement ! Pour l'utiliser, faites " + PREFIX + "purge (nombredemessages)")
-                    .addField(PREFIX + "mute", "Cette commande permet de muté un utilisateur pendant un certain temps. Pour l'utiliser, faites " + PREFIX + "mute @(utilisateur) + (raison)")
-                    .addField(PREFIX + "unmute", "Cette commande permet d'unmute un utilisateur. Pour l'utiliser, faites " + PREFIX + "unmute @(utilisateur)")
+            var shelp1_embed = new Discord.RichEmbed()
+                .setTitle("Commande qui demande au moins le modo ( sauf pour le kick )")
                 .setColor("#cc0000")
-                .setFooter("Aide du staff.")
-                .setAuthor("Pannel d'aide du staff")
-                .setDescription("Voici les commandes du staff !")
-                .setTimestamp()
-            message.delete()
-            message.channel.send(shelp_embed)
+                .addField(PREFIX + "purge", "Cette commande permet de supprimé des messages beaucoup plus rapidement ! Pour l'utiliser, faites " + PREFIX + "purge (nombredemessages)")
+                .addField(PREFIX + "mute", "Cette commande permet de muté un utilisateur pendant un certain temps. Pour l'utiliser, faites " + PREFIX + "mute @(utilisateur) + (raison)")
+                .addField(PREFIX + "unmute", "Cette commande permet d'unmute un utilisateur. Pour l'utiliser, faites " + PREFIX + "unmute @(utilisateur)")
+                .setFooter("Page 1/2 | Merci à @ZENFIX#8575 qui à bien aider pour cette commande. | " + foother)
+            var helptwo_embed = new Discord.RichEmbed()
+                .setTitle("Commande qui demande au moins l'admin ( sauf pour le kick )")
+                .setColor("#cc0000")
+                .addField(PREFIX + "kick", "Cette commande permet de kick un utilisateur ! Pour l'utiliser, faites " + PREFIX + "kick @(utilisateur) + (raison)")
+                .addField(PREFIX + "ban", "Cette commande permet de bannir un utilisateur ! Pour l'utiliser, faites " + PREFIX + "ban @(utilisateur) + (raison)")
+                .addField(PREFIX + "unkick", "Cette commande permet de unkick un utilisateur ! Pour l'utiliser, faites " + PREFIX + "unkick @(utilisateur)")
+                .addField(PREFIX + "unban", "Cette commande permet de unban un utilisateur ! Pour l'utiliser, faites " + PREFIX + "unban @(utilisateur)")
+            .setFooter("Page 2/2 | Merci à @ZENFIX#8575 qui à bien aider pour cette commande. | " + foother)
+            const shelpmessage = await message.channel.send(shelp1_embed);
+            await shelpmessage.react("1⃣");
+            await shelpmessage.react("2⃣");
+            const panierr = shelpmessage.createReactionCollector((reaction, user) => user.id === message.author.id);
+            panierr.on('collect', async(reaction) => {
+            if (reaction.emoji.name === "1⃣") {
+                shelpmessage.edit(shelp1_embed);
+            }
+            if (reaction.emoji.name === "2⃣") {
+                shelpmessage.edit(helptwo_embed);
+            }
+            await reaction.remove(message.author.id);
+            })
             console.log("AIDE STAFF " + message.author.username + " !")
         break;    
         
         case "help":
-            var help_embed = new Discord.RichEmbed()
-                    .addField(PREFIX + "botinfo", "Grâce à cette commande, tu pourras savoir mes info !") 
-                    .addField(PREFIX + "reseau", "Vous donne mes réseaux sociaux !")
+            var start_embed = new Discord.RichEmbed()
+                .setTitle("🛠Menu d'aide🛠 !")
+                .setDescription("**Pour naviguer dans le menu d'aide, utilisez les réactions si-dessous.**")
+                .setColor("#36393E")
+                .setFooter(foother + " | Merci à @ZENFIX#8575 qui à bien aider pour cette commande.")
+            var help1_embed = new Discord.RichEmbed()
+                .setTitle("🎵Musique🎵")
+                .setColor("#0000ff")
                     .addField(PREFIX + "play", "Jouer une musique !  Pour l'utiliser, faites " + PREFIX + "play (lien) !")
                     .addField(PREFIX + "skip", "Sauter une musique  Pour l'utiliser, faite " + PREFIX + "skip !")
                     .addField(PREFIX + "stop", "Arreter la musique  Pour l'utiliser, faites " + PREFIX + "stop !")
-                    .addField(PREFIX + "tradhelp", "Pour affichier l'aide des traductions !")
-	            .addField(PREFIX + "roles", "Pour affichier la liste des rôles disponible !")
-                    .addField(PREFIX + "google", "Commande pas trop utile mais tu peut faire des recherche google. Pour l'utiliser, faites " + PREFIX + "google (recherche) !")
-                    .addField(PREFIX + "shelp", "❌Afficher les commandes du staff. Mais seule ceux qui ont la perm de kick pourrons y accèder. ❌")
+                .setFooter("Page 1/3 | Merci à @ZENFIX#8575 qui à bien aider pour cette commande. | " + foother)
+            var help2_embed = new Discord.RichEmbed()
+                .setTitle("💩Autre💩")
                 .setColor("#0000ff")
-                .setFooter("Idée de commande ? Proposer en MP!")
-                .setAuthor("Pannel d'aide")
-                .setDescription("Voici les commandes du bot !")
-                .setTimestamp()
-            message.delete()
-            message.channel.send(help_embed)
-            console.log("Ta eu besoin d'aide toi " + message.author.username + " !")
+                    .addField(PREFIX + "botinfo", "Grâce à cette commande, tu pourras savoir mes info !") 
+                    .addField(PREFIX + "reseau", "Vous donne mes réseaux sociaux !")
+                    .addField(PREFIX + "tradhelp", "Pour affichier l'aide des traductions !")
+                    .addField(PREFIX + "roles", "Pour affichier la liste des rôles disponible !")
+                    .addField(PREFIX + "google", "Commande pas trop utile mais tu peut faire des recherche google. Pour l'utiliser, faites " + PREFIX + "google (recherche) !")
+                .setFooter("Page 2/3 | Merci à @ZENFIX#8575 qui à bien aider pour cette commande. | " + foother)    
+            var help3_embed = new Discord.RichEmbed()
+                .setTitle("⚙Administration🛠")
+                .setColor("#cc0000")
+                    .addField(PREFIX + "shelp", "❌Afficher les commandes du staff. Mais seule ceux qui ont la perm de kick pourrons y accèder. ❌")
+                .setFooter("Page 3/3 | Merci à @ZENFIX#8575 qui à bien aider pour cette commande. | " + foother)
+            const helpmessage = await message.channel.send(start_embed);
+            await helpmessage.react("1⃣");
+            await helpmessage.react("2⃣");
+            await helpmessage.react("3⃣");
+            const ranier = helpmessage.createReactionCollector((reaction, user) => user.id === message.author.id);
+            ranier.on('collect', async(reaction) => {
+                if (reaction.emoji.name === "1⃣") {
+                    helpmessage.edit(help1_embed);
+                }
+                if (reaction.emoji.name === "2⃣") {
+                    helpmessage.edit(help2_embed);
+                }
+                if (reaction.emoji.name === "3⃣") {
+                    helpmessage.edit(help3_embed)
+                }
+                await reaction.remove(message.author.id);
+            })
         break;
        
         case "kick":
@@ -493,6 +517,7 @@ bot.on("message", async function(message) {
                 .setColor("#FFFF00")
                 .setAuthor(message.author.username, message.author.avatarURL)
                 .setTimestamp()
+                .setFooter("SupersBOT - " + version)
             member.guild.channels.find("name", "🤖bot-logs🤖").send(kick_embed);
             member.guild.channels.find("name", "kick").send(kick_embed);
         break;
@@ -513,6 +538,7 @@ bot.on("message", async function(message) {
                 .setColor("#FFFF00")
                 .setAuthor(message.author.username, message.author.avatarURL)
                 .setTimestamp()
+                .setFooter("SupersBOT - " + version)
             member.guild.channels.find("name", "🤖bot-logs🤖").send(unkick_embed);
         break;
 
@@ -531,6 +557,7 @@ bot.on("message", async function(message) {
                     .addField("Utilisateur :", user.toString())
                     .addField("Modérateur :", message.author.toString())
                     .addField("Raison :", reasontimed)
+                .setFooter("SupersBOT - " + version)
                 .setColor("#FFFF00")
                 .setAuthor(message.author.username, message.author.avatarURL)
                 .setTimestamp()
@@ -551,6 +578,7 @@ bot.on("message", async function(message) {
                     .addField("Action :", "UnBan")
                     .addField("Utilisateur :", user.toString())
                     .addField("Modérateur :", message.author.toString())
+                .setFooter("SupersBOT - " + version)
                 .setColor("#FFFF00")
                 .setAuthor(message.author.username, message.author.avatarURL)
                 .setTimestamp()
@@ -574,7 +602,7 @@ bot.on("message", async function(message) {
                     .addField(emoji_twitter + "Twitter", "[@SupersFanne](https://twitter.com/supersfanne)", true)
                     .addField(emoji_facebook + "Facebook", "[@Supers-Fanne](https://www.facebook.com/profile.php?id=100012028577867)", true)
                     .addField(emoji_snap + "Snapchat", "[@supers_fanne](https://app.snapchat.com/web/deeplink/snapcode?username=supers_fanne&type=SVG&size=240)")
-                .setFooter("Demande de @" + message.author.username + "#" + message.author.discriminator + " ! | Grands merci à @ZENFIX#8575 pour les logos !")
+                .setFooter(foother + "| Grands merci à @ZENFIX#8575 pour les logos !")
                 .setAuthor("Réseaux Sociaux De Supers Fanne")
                 .setDescription("Pour l'actualité !")
                 .setColor('#0000ff')
@@ -592,7 +620,7 @@ bot.on("message", async function(message) {
                 .setTitle("Recherche Google")
                 .setDescription('[Résultat de là recherche](https://www.google.fr/#q=' + suffix_google + ")")
                 .setColor('#36393E')
-                .setFooter("By Ilian ! ^^")
+                .setFooter(foother)
             message.channel.send(google_embed)
             console.log("J'ai rechercher!" + message.author.username + " !!");
         break;
@@ -609,7 +637,7 @@ bot.on("message", async function(message) {
                     .addField(PREFIX + "tradesen", "Traduction Espagnol ==> Anglais !")
                     .addField(PREFIX + "tradenes", "Taduction Anglais ==> Espagnol !")            
                 .setColor("#00ffcc")
-                .setFooter("Amuse toi a traduire petit enfant !")
+                .setFooter(foother)
                 .setAuthor("Pannel des Traduction")
                 .setDescription("Petit rappelle le, je vais seulement envoyé un liens google traduction !")
                 .setTimestamp()
@@ -626,7 +654,7 @@ bot.on("message", async function(message) {
                 .setTitle("Traduction Anglais -> Français")
                 .setDescription('[Voir la Traduction](https://translate.google.fr/#en/fr/' + suffix_tradenfr + ')')
                 .setColor("#36393E")
-                .setFooter("By Ilian ! ^^")
+                .setFooter(foother)
             message.channel.send(tradenfr_embed)
             console.log("Traduction Anglais -> Français");
         break;
@@ -639,7 +667,7 @@ bot.on("message", async function(message) {
                 .setTitle("Traduction Français -> Anglais")
                 .setDescription('[Voir la Traduction](https://translate.google.fr/#fr/en/' + suffix_tradfren + ')')
                 .setColor("#36393E")
-                .setFooter("By Ilian ! ^^")
+                .setFooter(foother)
             message.channel.send(tradfren_embed)
             console.log("Traduction Français -> Anglais");
         break;
@@ -652,7 +680,7 @@ bot.on("message", async function(message) {
                 .setTitle("Traduction Espagnol -> Français")
                 .setDescription('[Voir la Traduction](https://translate.google.fr/#es/fr/' + suffix_tradesfr + ')')
                 .setColor("#36393E")
-                .setFooter("By Ilian ! ^^")
+                .setFooter(foother)
             message.channel.send(tradesfr_embed)
             console.log("Traduction Espagnol -> Français");
         break;
@@ -665,7 +693,7 @@ bot.on("message", async function(message) {
                 .setTitle("Traduction Français -> Espagnol")
                 .setDescription('[Voir la Traduction](https://translate.google.fr/#fr/es/' + suffix_tradfres + ')')
                 .setColor("#36393E")
-                .setFooter("By Ilian ! ^^")
+                .setFooter(foother)
             message.channel.send(tradfres_embed)
             console.log("Traduction Français -> Espagnol");
         break;      
@@ -678,7 +706,7 @@ bot.on("message", async function(message) {
                 .setTitle("Traduction Anglais -> Espagnol")
                 .setDescription('[Voir la Traduction](https://translate.google.fr/#en/es/' + suffix_tradenes + ')')
                 .setColor("#36393E")
-                .setFooter("By Ilian ! ^^")
+                .setFooter(foother)
             message.channel.send(tradenes_embed)
             console.log("Traduction Anglais -> Espagnol");      
         break;     
@@ -691,7 +719,7 @@ bot.on("message", async function(message) {
                 .setTitle("Traduction Espagnol -> Anglais")
                 .setDescription('[Voir la Traduction](https://translate.google.fr/#es/en/' + suffix_tradesen + ')')
                 .setColor("#36393E")
-                .setFooter("By Ilian ! ^^")
+                .setFooter(foother)
             message.channel.send(tradesen_embed)
             console.log("Traduction Espagnol -> Anglais");
 	    break;        
@@ -708,7 +736,7 @@ bot.on("message", async function(message) {
             var newm_embed = new Discord.RichEmbed()
                 .setColor("#FF0000")
                     .addField("Annonce!", " "+ staffs.join(" "))
-                .setFooter("By Ilian ! ^^")
+                .setFooter("Annonce de : @" + message.author.username + "#" + message.author.discriminator + " ! | SupersBOT - " + version)
             message.delete();
             message.guild.channels.find('name', "annonce").send(":arrow_down: <@&454375100326608897> :arrow_down: ")
             member.guild.channels.find("name", "annonce").send(newm_embed);
@@ -726,14 +754,21 @@ bot.on("message", async function(message) {
             var new_embed = new Discord.RichEmbed()
                 .setColor("#FF0000")
                     .addField("Annonce!", " "+ staff.join(" "))
-                .setFooter("By Ilian ! ^^")
+                .setFooter("Annonce de : @" + message.author.username + "#" + message.author.discriminator + " ! | SupersBOT - " + version)
             message.delete();
             member.guild.channels.find("name", "annonce").send(new_embed);
         break;
 
         case "botinfo":
-            var ping_embed = new Discord.RichEmbed()
-                .addField(':clock2: Calcul en cours...', "Merci de patienter quelques instants !")
+            var load1_embed = new Discord.RichEmbed()
+                .addField(':clock2: Chargement en cours.', "Merci de patienter quelques instants !")
+            message.channel.send(load1_embed).then(message => message.edit(load2_embed)).then(message => message.edit(load3_embed)).then(message => message.edit(load4_embed)).then(message => message.edit(botinfo_embed));
+            var load2_embed = new Discord.RichEmbed()
+                .addField(':clock2: Chargement en cours..', "Merci de patienter quelques instants !")  
+            var load3_embed = new Discord.RichEmbed()
+                .addField(':clock2: Chargement en cours...', "Merci de patienter quelques instants !")   
+            var load4_embed = new Discord.RichEmbed()
+                .addField(':clock2: Chargement en cours.', "Merci de patienter quelques instants !")    
             let startTime = Date.now();
             message.channel.send(ping_embed).then(message => message.edit(botinfo_embed));
             var botinfo_embed = new Discord.RichEmbed()
@@ -741,13 +776,51 @@ bot.on("message", async function(message) {
                 .setTitle('Mes informations :')
                     .addField("Serveurs :", "Je suis sur " + bot.guilds.array().length + " serveurs")
                     .addField("Membres :", "Je voit ``" + bot.users.size + " membres`` au total.")
+                    .addField("Version :", "La version de mon système est : ``" + version + "`` !")
+                    .addBlankField()
                     .addField('Mon Ping :', ':ping_pong: Pong !')
                     .addField(":clock2: Temps :", `${Date.now() - startTime} millisecondes`, true)
                     .addField(":heartpulse: API Discord :", `${bot.ping} millisecondes`, true)
                 .setTimestamp()
-                .setFooter("By Ilian^^ !")
+                .setFooter(foother)
         break;
 
+        case "servinfo":
+            var load1_embed = new Discord.RichEmbed()
+                .addField(':clock2: Chargement en cours.', "Merci de patienter quelques instants !")
+            message.channel.send(load1_embed).then(message => message.edit(load2_embed)).then(message => message.edit(load3_embed)).then(message => message.edit(load4_embed)).then(message => message.edit(servinfo_embed));
+            var load2_embed = new Discord.RichEmbed()
+                .addField(':clock2: Chargement en cours..', "Merci de patienter quelques instants !")  
+            var load3_embed = new Discord.RichEmbed()
+                .addField(':clock2: Chargement en cours...', "Merci de patienter quelques instants !")   
+            var load4_embed = new Discord.RichEmbed()
+                .addField(':clock2: Chargement en cours.', "Merci de patienter quelques instants !")       
+            var servinfo_embed = new Discord.RichEmbed()
+                .setAuthor("Information du Serveur", message.author.avatarURL)
+                    .addField("Nom du Serveur :", "Le serveur s'appelle : ``" + message.guild.name + "`.", true)
+                    .addField("ServeurID :", "L'ID du serveur est : ``" + message.guild.id + "``.", true)
+                    .addField("Création du Serveur", "Le serveur à été crée le : ``" + message.guild.createdAt + "``.", true)
+                    .addField("Fondateur :", "Le fondateur du serveur est : " + message.guild.owner + ".", true)
+                    .addField("FondateurID :", "L'ID du Fondteur est : ``" + message.guild.ownerID + "``.", true)
+                    .addField("Membres :", "Nous sommes actuellement ``" + message.guild.memberCount  + " membres`` au total.", true)
+                .setColor("#FF0000")
+                .setFooter(foother)
+                .setThumbnail(message.guild.iconURL)
+        break;
+/*
+        case "majinfo":
+                var maj_embed = new Discord.RichEmbed()
+                .setTitle("Update  V.1.1.6")
+                    .addField("Roles,", "Les Notifications de rôles on été améliorer.")
+                    .addField("Nouvelle Commande,", "La commande ``" + PREFIX + "servinfo`` est disponible.")
+                    .addField(PREFIX + "botinfo,", "Cette commande a subit une légère update.")
+                    .addField("Amélioration Aide,", "Les menu d'aide on été améliorer.")
+                    .addField("Les Footer,", "Tout les Footer on été changer !")
+                .setColor("#FF0000")
+                .setFooter(version)
+            bot.channels.findAll('name', 'bot-update').map(channel => channel.send(maj_embed));
+        break;
+*/
         case "propo":
             let suggest = message.content.split(" ").slice(1);
             let sugesstfix = suggest.join(" ")
