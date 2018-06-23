@@ -6,7 +6,7 @@ const EVERYONE = "@";
 
 var client = new Discord.Client();
 
-var version = "V.1.5.6"
+var version = "V.1.5.7"
 
 var bot = new Discord.Client();
 
@@ -104,10 +104,10 @@ bot.on("message", async function(message) {
     var roleNotifAnimation = member.guild.roles.find("name", "🔔Notification Animation")       
     
     var roleMute = member.guild.roles.find("name", "Mute")
-    
-    var modlog = member.guild.channels.find("name", "🤖bot-logs🤖")
 
     var foother = "Demande de @" + message.author.username + "#" + message.author.discriminator + " ! | SupersBOT - " + version
+    
+    var modlog = member.guild.channels.find("name", "🤖bot-logs🤖")
     
     var user = message.mentions.users.first();
 
@@ -359,7 +359,7 @@ bot.on("message", async function(message) {
             message.reply("à bien enlever son role 🔔Notification Animation ✅")		    
         break;			    
  
-        case "roles":
+        case "rolelist":
             message.delete()
             var helprole1_embed = new Discord.RichEmbed()
                 .setTitle("Menu d'aide rôle")
@@ -471,9 +471,7 @@ bot.on("message", async function(message) {
                 .setColor("#0000ff")
                     .addField(PREFIX + "botinfo", "Grâce à cette commande, tu pourras savoir mes info !") 
                     .addField(PREFIX + "reseau", "Vous donne mes réseaux sociaux !")
-                    .addField(PREFIX + "tradhelp", "Pour affichier l'aide des traductions !")
                     .addField(PREFIX + "roles", "Pour affichier la liste des rôles disponible !")
-                    .addField(PREFIX + "google", "Commande pas trop utile mais tu peut faire des recherche google. Pour l'utiliser, faites " + PREFIX + "google (recherche) !")
                 .setFooter("Page 2/3 | Merci à @ZENFIX#8575 qui à bien aider pour cette commande. | " + foother)    
             var help3_embed = new Discord.RichEmbed()
                 .setTitle("⚙Administration🛠")
@@ -506,6 +504,9 @@ bot.on("message", async function(message) {
             var member = message.mentions.members.first();
             if (message.mentions.users.size < 1) return message.reply("À qui je dois mettre la sanction: kick")
             message.channel.send(member.toString() + " a bien été kick. ✅")
+            member.roles.forEach(role => {
+                member.removeRole(role)
+            })
                 member.addRole(rolekick)
             console.log("Tu a kick quelqu'un toi " + message.author.username + " !")
                     
@@ -549,6 +550,9 @@ bot.on("message", async function(message) {
             var member = message.mentions.members.first();
             if (message.mentions.users.size < 1) return message.reply("À qui je dois mettre la sanction: Ban")
             message.channel.send(member.toString() + " a bien été ban. ✅")
+            member.roles.forEach(role => {
+                member.removeRole(role)
+            })
                 member.addRole(roleban)
             console.log("Tu a b n quelqu'un toi " + message.author.username + " !")
         
@@ -610,119 +614,7 @@ bot.on("message", async function(message) {
             message.delete()
             message.channel.send(reseau_embed)
             console.log("Mes reseau " + message.author.username + " !")
-        break;
-      
-        case "google":
-            let google = message.content.split(" ").slice(1);
-            let suffix_google = google.join('%20')
-            if(!suffix_google) return message.reply("Vous devez marquez quoi cherchez.")
-            var google_embed = new Discord.RichEmbed()
-                .setTitle("Recherche Google")
-                .setDescription('[Résultat de là recherche](https://www.google.fr/#q=' + suffix_google + ")")
-                .setColor('#36393E')
-                .setFooter(foother)
-            message.channel.send(google_embed)
-            console.log("J'ai rechercher!" + message.author.username + " !!");
-        break;
-
-        case "tradhelp":
-            var tradhelp_embed = new Discord.RichEmbed()
-                    .addBlankField()        
-                    .addField(PREFIX + "tradenfr", "Traduction Anglais ==> Français !") 
-                    .addField(PREFIX + "tradfren", "Traduction Français ==> Anglais !")
-                    .addBlankField()
-                    .addField(PREFIX + "tradesfr", "Traduction Espagnol ==> Français !")
-                    .addField(PREFIX + "tradfres", "Taduction Français ==> Espagnol !")
-                    .addBlankField()
-                    .addField(PREFIX + "tradesen", "Traduction Espagnol ==> Anglais !")
-                    .addField(PREFIX + "tradenes", "Taduction Anglais ==> Espagnol !")            
-                .setColor("#00ffcc")
-                .setFooter(foother)
-                .setAuthor("Pannel des Traduction")
-                .setDescription("Petit rappelle le, je vais seulement envoyé un liens google traduction !")
-                .setTimestamp()
-            message.delete()
-            message.channel.send(tradhelp_embed)
-            console.log("Il veut traduire " + message.author.username + " !")
         break;      
-      
-        case "tradenfr":
-            let tradenfr = message.content.split(" ").slice(1);
-            let suffix_tradenfr = tradenfr.join('%20')
-            if(!suffix_tradenfr) return message.reply("Vous devez marquez un texte à traduire")
-            var tradenfr_embed = new Discord.RichEmbed()
-                .setTitle("Traduction Anglais -> Français")
-                .setDescription('[Voir la Traduction](https://translate.google.fr/#en/fr/' + suffix_tradenfr + ')')
-                .setColor("#36393E")
-                .setFooter(foother)
-            message.channel.send(tradenfr_embed)
-            console.log("Traduction Anglais -> Français");
-        break;
-      
-        case "tradfren":
-            let tradfren = message.content.split(" ").slice(1);
-            let suffix_tradfren = tradfren.join('%20')
-            if(!suffix_tradfren) return message.reply("Vous devez marquez un texte à traduire")
-            var tradfren_embed = new Discord.RichEmbed()
-                .setTitle("Traduction Français -> Anglais")
-                .setDescription('[Voir la Traduction](https://translate.google.fr/#fr/en/' + suffix_tradfren + ')')
-                .setColor("#36393E")
-                .setFooter(foother)
-            message.channel.send(tradfren_embed)
-            console.log("Traduction Français -> Anglais");
-        break;
-      
-        case "tradesfr":
-            let tradesfr = message.content.split(" ").slice(1);
-            let suffix_tradesfr = tradesfr.join('%20')
-            if(!suffix_tradesfr) return message.reply("Vous devez marquez un texte à traduire")
-            var tradesfr_embed = new Discord.RichEmbed()
-                .setTitle("Traduction Espagnol -> Français")
-                .setDescription('[Voir la Traduction](https://translate.google.fr/#es/fr/' + suffix_tradesfr + ')')
-                .setColor("#36393E")
-                .setFooter(foother)
-            message.channel.send(tradesfr_embed)
-            console.log("Traduction Espagnol -> Français");
-        break;
-      
-        case "tradfres":
-            let tradfres = message.content.split(" ").slice(1);
-            let suffix_tradfres = tradfres.join('%20')
-            if(!suffix_tradfres) return message.reply("Vous devez marquez un texte à traduire")
-            var tradfres_embed = new Discord.RichEmbed()
-                .setTitle("Traduction Français -> Espagnol")
-                .setDescription('[Voir la Traduction](https://translate.google.fr/#fr/es/' + suffix_tradfres + ')')
-                .setColor("#36393E")
-                .setFooter(foother)
-            message.channel.send(tradfres_embed)
-            console.log("Traduction Français -> Espagnol");
-        break;      
-      
-        case "tradenes":
-            let tradenes = message.content.split(" ").slice(1);
-            let suffix_tradenes = tradenes.join('%20')
-            if(!suffix_tradenes) return message.reply("Vous devez marquez un texte à traduire")
-            var tradenes_embed = new Discord.RichEmbed()
-                .setTitle("Traduction Anglais -> Espagnol")
-                .setDescription('[Voir la Traduction](https://translate.google.fr/#en/es/' + suffix_tradenes + ')')
-                .setColor("#36393E")
-                .setFooter(foother)
-            message.channel.send(tradenes_embed)
-            console.log("Traduction Anglais -> Espagnol");      
-        break;     
-
-	    case "tradesen":
-            let tradesen = message.content.split(" ").slice(1);
-            let suffix_tradesen = tradesen.join('%20')
-            if(!suffix_tradesen) return message.reply("Vous devez marquez un texte à traduire")
-            var tradesen_embed = new Discord.RichEmbed()
-                .setTitle("Traduction Espagnol -> Anglais")
-                .setDescription('[Voir la Traduction](https://translate.google.fr/#es/en/' + suffix_tradesen + ')')
-                .setColor("#36393E")
-                .setFooter(foother)
-            message.channel.send(tradesen_embed)
-            console.log("Traduction Espagnol -> Anglais");
-	    break;        
 
         case "new@":
             if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("Tu ne peux exécuter cette commande. ❌");
@@ -784,58 +676,19 @@ bot.on("message", async function(message) {
                 .setTimestamp()
                 .setFooter(foother)
         break;
-
-        case "servinfo":
-            var load1_embed = new Discord.RichEmbed()
-                .addField(':clock2: Chargement en cours.', "Merci de patienter quelques instants !")
-            message.channel.send(load1_embed).then(message => message.edit(load2_embed)).then(message => message.edit(load3_embed)).then(message => message.edit(load4_embed)).then(message => message.edit(servinfo_embed));
-            var load2_embed = new Discord.RichEmbed()
-                .addField(':clock2: Chargement en cours..', "Merci de patienter quelques instants !")  
-            var load3_embed = new Discord.RichEmbed()
-                .addField(':clock2: Chargement en cours...', "Merci de patienter quelques instants !")   
-            var load4_embed = new Discord.RichEmbed()
-                .addField(':clock2: Chargement en cours.', "Merci de patienter quelques instants !")       
-            var servinfo_embed = new Discord.RichEmbed()
-                .setAuthor("Information du Serveur", message.author.avatarURL)
-                    .addField("Nom du Serveur :", "Le serveur s'appelle : ``" + message.guild.name + "`.", true)
-                    .addField("ServeurID :", "L'ID du serveur est : ``" + message.guild.id + "``.", true)
-                    .addField("Création du Serveur", "Le serveur à été crée le : ``" + message.guild.createdAt + "``.", true)
-                    .addField("Fondateur :", "Le fondateur du serveur est : " + message.guild.owner + ".", true)
-                    .addField("FondateurID :", "L'ID du Fondteur est : ``" + message.guild.ownerID + "``.", true)
-                    .addField("Membres :", "Nous sommes actuellement ``" + message.guild.memberCount  + " membres`` au total.", true)
-                .setColor("#FF0000")
-                .setFooter(foother)
-                .setThumbnail(message.guild.iconURL)
-        break;
 /*
         case "majinfo":
+           if (message.author.id === "193092758267887616") {
                 var maj_embed = new Discord.RichEmbed()
-                .setTitle("Update  V.1.1.6")
-                    .addField("Roles,", "Les Notifications de rôles on été améliorer.")
-                    .addField("Nouvelle Commande,", "La commande ``" + PREFIX + "servinfo`` est disponible.")
-                    .addField(PREFIX + "botinfo,", "Cette commande a subit une légère update.")
-                    .addField("Amélioration Aide,", "Les menu d'aide on été améliorer.")
-                    .addField("Les Footer,", "Tout les Footer on été changer !")
-                .setColor("#FF0000")
+                .setTitle("Update " + version)
+                    .addField("Suppression de commande,", "**Plusieurs commande on été supprimer car elle ne servais pas vraiment pour ce bot.**")
+                .setColor("#04B404")
                 .setFooter(version)
             bot.channels.findAll('name', 'bot-update').map(channel => channel.send(maj_embed));
-        break;
-*/
-        case "propo":
-            let suggest = message.content.split(" ").slice(1);
-            let sugesstfix = suggest.join(" ")
-            if (message.channel.name !== "🤖commande-bot🤖") return message.reply("Les commandes sont à effectuer dans le salon dans ``#🤖commande-bot🤖`` !")
-            if (!sugesstfix) return message.reply("Merci d'écrire votre suggestions.")
-            var propo_embed = new Discord.RichEmbed()
-                .setColor("#36393E")
-                    .addField(message.author.username + " - Proposition pseudo de : ", "``" + sugesstfix + "``")
-                    .addField("--------------------", "Provenance du message : " + message.guild.name, true)
-                .setThumbnail(message.guild.iconURL)
-                .setTimestamp();
             message.delete()
-            message.channel.send("**Propositions de pseudo envoyée avec succès** :white_check_mark: " + message.author.toString())
-        message.client.users.get("193092758267887616").send(propo_embed)
-        break;
+            }
+        break;*/
+
     }
 });
 
