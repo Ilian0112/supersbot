@@ -498,7 +498,7 @@ bot.on(`message`, async function (message) {
         break;
 
         case "ban":
-            iif (!message.member.roles.find(r => r.name == "Modérateur" || r.name == "Administrateur" || r.name == "Gérant Staff" || r.name == "Supers_Fanne" )) return message.channel.send(noperm_embed);
+            if (!message.member.roles.find(r => r.name == "Modérateur" || r.name == "Administrateur" || r.name == "Gérant Staff" || r.name == "Supers_Fanne" )) return message.channel.send(noperm_embed);
             if (!modlog) return message.reply("Je ne trouve pas de channel log.");
             if (!reasontimed) return message.reply("Tu as oublié la raison ! :D")
             var member = message.mentions.members.first();
