@@ -9,7 +9,7 @@ const bot = new Discord.Client();
 //
 
 // BOT INFO
-var version = `V.2.0.0`;
+var version = `V.2.0.0 EN DEV`;
 const PREFIX = `s.`;
 const botname = `SupersBot`;
 //
