@@ -662,7 +662,6 @@ bot.on("message", async function(message) {
             var load4_embed = new Discord.RichEmbed()
                 .addField(':clock2: Chargement en cours.', "Merci de patienter quelques instants !")    
             let startTime = Date.now();
-            message.channel.send(ping_embed).then(message => message.edit(botinfo_embed));
             var botinfo_embed = new Discord.RichEmbed()
                 .setColor('#04B404')
                 .setTitle('Mes informations :')
