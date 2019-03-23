@@ -21,11 +21,11 @@ const emoji_instaID = `457965848301404162`
     , emoji_snapID = `457975117818101791`
     , emoji_youtubeID = `475071414932865065`
 
-const emoji_insta = `<:emoji_insta:${emoji_instaID} >`
-    , emoji_twitter = `<:emoji_twitter ${emoji_twitterID} >`
-    , emoji_facebook = `<:emoji_facebook:${emoji_facebookID} >`
-    , emoji_snap = `<:emoji_snap:${emoji_snapID} >`
-    , emoji_youtube = `<:emoji_youtube:${emoji_youtubeID} >`
+const emoji_insta = `<:emoji_insta:${emoji_instaID}>`
+    , emoji_twitter = `<:emoji_twitter:${emoji_twitterID}>`
+    , emoji_facebook = `<:emoji_facebook:${emoji_facebookID}>`
+    , emoji_snap = `<:emoji_snap:${emoji_snapID}>`
+    , emoji_youtube = `<:emoji_youtube:${emoji_youtubeID}>`
 //
 
 // MUSIQUE 
@@ -48,7 +48,7 @@ function play(connection, message) {
 
 // Quand le bot est start
 bot.on("ready", function () {
-    bot.user.setActivity(`${botname} - ${PREFIX}help`, {
+    bot.user.setActivity(`${botname} - BETA EN DEV`, {
         'type': 'STREAMING',
         'url': "https://www.twitch.tv/supers_fanne"
     }),
