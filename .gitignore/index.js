@@ -249,7 +249,7 @@ bot.on(`message`, async function (message) {
                 .setColor(`#FF0000`)
                 .setTimestamp()
 
-            if (!message.member.roles.find(r => r.name == "Helpeur" || r.name == "Modérateur Test" || r.name == "Modérateur" || r.name == "Administrateur" || r.name == "Gérant Staff" || r.name == "Supers_Fanne" )) return message.channel.send(noperm_embed);
+            if (!message.member.roles.find(r => r.name == "Helpeur" || r.name == "Modérateur Test" || r.name == "Modérateur" || r.name == "Administrateur" || r.name == "Gérant Staff" || r.name == "Supers Fanne" )) return message.channel.send(noperm_embed);
             if (!tomute2) return message.channel.send(nomention_embed)
             //if(tomute2.hasPermission(`MUTE_MEMBERS`)) return message.channel.send(`**Vous ne pouvez pas réduire au silence un membre du Staff !** `)
             if (!reason) return message.channel.send(noreason_embed)
@@ -356,7 +356,7 @@ bot.on(`message`, async function (message) {
 
             if (!tomute) return message.channel.send(nomention_embed)
 
-            if (!message.member.roles.find(r => r.name == "Helpeur" || r.name == "Modérateur Test" || r.name == "Modérateur" || r.name == "Administrateur" || r.name == "Gérant Staff" || r.name == "Supers_Fanne" )) return message.channel.send(noperm_embed);
+            if (!message.member.roles.find(r => r.name == "Helpeur" || r.name == "Modérateur Test" || r.name == "Modérateur" || r.name == "Administrateur" || r.name == "Gérant Staff" || r.name == "Supers Fanne" )) return message.channel.send(noperm_embed);
             if (tomute.hasPermission(`MUTE_MEMBERS`)) return message.channel.send(`**Vous ne pouvez pas réduire au silence un membre du Staff !** `)
 
 
@@ -394,7 +394,7 @@ bot.on(`message`, async function (message) {
             break;
 
         case "shelp":
-            if (!message.member.roles.find(r => r.name == "Helpeur" || r.name == "Modérateur Test" || r.name == "Modérateur" || r.name == "Administrateur" || r.name == "Gérant Staff" || r.name == "Supers_Fanne" )) return message.channel.send(noperm_embed);
+            if (!message.member.roles.find(r => r.name == "Helpeur" || r.name == "Modérateur Test" || r.name == "Modérateur" || r.name == "Administrateur" || r.name == "Gérant Staff" || r.name == "Supers Fanne" )) return message.channel.send(noperm_embed);
             var shelp1_embed = new Discord.RichEmbed()
                 .setTitle("Commande qui demande au moins le modo ( sauf pour le kick )")
                 .setColor("#cc0000")
@@ -472,7 +472,7 @@ bot.on(`message`, async function (message) {
             break;
 
         case "kick":
-            if (!message.member.roles.find(r => r.name == "Modérateur" || r.name == "Administrateur" || r.name == "Gérant Staff" || r.name == "Supers_Fanne" )) return message.channel.send(noperm_embed);
+            if (!message.member.roles.find(r => r.name == "Modérateur" || r.name == "Administrateur" || r.name == "Gérant Staff" || r.name == "Supers Fanne" )) return message.channel.send(noperm_embed);
             if (!modlog) return message.reply("Je ne trouve pas de channel log.");
             if (!reasontimed) return message.reply("Tu as oublié la raison ! :D")
             var member = message.mentions.members.first();
@@ -498,7 +498,7 @@ bot.on(`message`, async function (message) {
         break;
 
         case "ban":
-            if (!message.member.roles.find(r => r.name == "Modérateur" || r.name == "Administrateur" || r.name == "Gérant Staff" || r.name == "Supers_Fanne" )) return message.channel.send(noperm_embed);
+            if (!message.member.roles.find(r => r.name == "Modérateur" || r.name == "Administrateur" || r.name == "Gérant Staff" || r.name == "Supers Fanne" )) return message.channel.send(noperm_embed);
             if (!modlog) return message.reply("Je ne trouve pas de channel log.");
             if (!reasontimed) return message.reply("Tu as oublié la raison ! :D")
             var member = message.mentions.members.first();
@@ -524,7 +524,7 @@ bot.on(`message`, async function (message) {
             break;
 
         case "unban":
-            if (!message.member.roles.find(r => r.name == "Administrateur" || r.name == "Gérant Staff" || r.name == "Supers_Fanne" )) return message.channel.send(noperm_embed);
+            if (!message.member.roles.find(r => r.name == "Administrateur" || r.name == "Gérant Staff" || r.name == "Supers Fanne" )) return message.channel.send(noperm_embed);
             if (!modlog) return message.reply("Je ne trouve pas de channel log.");
             var member = message.mentions.members.first();
             if (message.mentions.users.size < 1) return message.reply("À qui je enlevé mettre la sanction: Ban")
@@ -544,7 +544,7 @@ bot.on(`message`, async function (message) {
             break;
 
         case "purge":
-            if (!message.member.roles.find(r => r.name == "Modérateur" || r.name == "Administrateur" || r.name == "Gérant Staff" || r.name == "Supers_Fanne" )) return message.channel.send(noperm_embed);
+            if (!message.member.roles.find(r => r.name == "Modérateur" || r.name == "Administrateur" || r.name == "Gérant Staff" || r.name == "Supers Fanne" )) return message.channel.send(noperm_embed);
             var messagecount = parseInt(args2.join(" "));
             message.channel.fetchMessages({
                 limit: messagecount
